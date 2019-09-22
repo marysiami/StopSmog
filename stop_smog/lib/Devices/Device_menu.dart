@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:stop_smog/Blog/Post_icon.dart' show PostIcon;
-import 'package:stop_smog/Blog/sample_data_blog.dart';
 
-class BlogMenuPage  extends StatelessWidget {
-  static const routeName = '/blog'; 
+import 'Device_icon.dart';
+import 'Sample_devices_data.dart';
+
+
+
+class DeviceMenuPage  extends StatelessWidget {
+  static const routeName = '/deviceMenu'; 
 
   @override
   Widget build(BuildContext context) {
@@ -11,16 +14,15 @@ class BlogMenuPage  extends StatelessWidget {
       appBar: AppBar(title: const Text("Blog"),),
       body: GridView(
       padding: const EdgeInsets.all(30),
-      children: SampleDataBlog
+      children: SampleDevicesData
       .map(
-        (postData) =>PostIcon(
-          postData.id,
-          postData.title,
-          postData.color,
-          postData.keyWords,         
-          postData.author,
-          postData.content,
-          postData.imageUrl
+        (deviceData) =>DeviceIcon(
+         deviceData.id,
+         deviceData.title,
+         deviceData.link,
+         deviceData.content,
+         deviceData.deviceCathegoryId,
+         deviceData.imageUrl
         ),
         ).toList(), 
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

@@ -4,9 +4,10 @@ class Post{
   final int id;
   final String title;  
   final Color color;
-  final Set<String> keyWords;
+  final List<String> keyWords;
   final String author;
   final String content;
+  final String imageUrl;
 
   const Post({ 
     @required this.id,
@@ -14,6 +15,7 @@ class Post{
     this.color = Colors.indigo, //do zmiany
     @required this.keyWords,
     @required this.author,
-    @required this.content});
+    @required this.content,
+    @required this.imageUrl});
 
 }

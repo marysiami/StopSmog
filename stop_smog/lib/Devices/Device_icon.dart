@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:stop_smog/Blog/Post_page.dart';
 
-class PostIcon  extends StatelessWidget {
 
- //TODO: dodać keywords 
-
+class DeviceIcon  extends StatelessWidget {
+ 
   final int id;
-  final String title;  
-  final Color color;
-  final List<String> keyWords;
-  final String author;
+  final String title;
+  final String link;
   final String content;
+  final int deviceCathegoryId;
   final String imageUrl;
 
-  PostIcon(this.id, this.title, this.color, this.keyWords, this.author, this.content, this.imageUrl);
+  DeviceIcon(this.id,this.title, this.link, this.content, this.deviceCathegoryId, this.imageUrl);
   
 
   void selectPost(BuildContext ctx){
@@ -25,7 +23,7 @@ class PostIcon  extends StatelessWidget {
     // ));
     .pushNamed(
       PostPage.routeName,
-      arguments: {'id': id,'title': title,'keyWords': keyWords,'author': author,'content': content,'image': imageUrl}
+      arguments: {'id': id,'title': title,'link': link,'content': content,'deviceCathegoryId': deviceCathegoryId,'imageUrl': imageUrl}
       );
   }
 
@@ -41,7 +39,7 @@ class PostIcon  extends StatelessWidget {
         title,
         style: Theme.of(context).textTheme.title),
       decoration: BoxDecoration(gradient: LinearGradient(
-        colors: [ color.withOpacity(0.1), color ],
+        colors: [ Color.fromARGB(0xFF,0xB1,0x8E,0xA6).withOpacity(0.1), Color.fromARGB(0xFF,0xB1,0x8E,0xA6) ],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight
         ),
