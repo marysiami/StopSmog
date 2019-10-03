@@ -39,7 +39,8 @@ class PostIcon  extends StatelessWidget {
       padding: const EdgeInsets.all(30),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.title),
+//        style: Theme.of(context).textTheme.title
+        ),
       decoration: BoxDecoration(gradient: LinearGradient(
         colors: [ color.withOpacity(0.1), color ],
         begin: Alignment.topLeft,

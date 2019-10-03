@@ -19,6 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cached_network_image: ^1.1.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -27,7 +28,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  url_launcher: ^5.1.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -56,23 +57,23 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Raleway
-      fonts:
-        - asset: assets/fonts/Raleway-Regular.ttf
-        - asset: assets/fonts/Raleway-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Raleway-Black.ttf
-          weight: 900
-    - family: RobotoCondensed
-      fonts:
-        - asset: assets/fonts/RobotoCondensed-Regular.ttf
-        - asset: assets/fonts/RobotoCondensed-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/RobotoCondensed-Light.ttf
-          weight: 300
-        - asset: assets/fonts/RobotoCondensed-Italic.ttf
-          style: italic
+#fonts:
+#    - family: Raleway
+#      fonts:
+#        - asset: assets/fonts/Raleway-Regular.ttf
+#        - asset: assets/fonts/Raleway-Bold.ttf
+#          weight: 700
+#        - asset: assets/fonts/Raleway-Black.ttf
+#          weight: 900
+#    - family: RobotoCondensed
+#      fonts:
+#        - asset: assets/fonts/RobotoCondensed-Regular.ttf
+#        - asset: assets/fonts/RobotoCondensed-Bold.ttf
+#          weight: 700
+#        - asset: assets/fonts/RobotoCondensed-Light.ttf
+#          weight: 300
+#        - asset: assets/fonts/RobotoCondensed-Italic.ttf
+#          style: italic
 
   #   - family: Schyler
   #     fonts:

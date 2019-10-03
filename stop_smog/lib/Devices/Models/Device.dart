@@ -1,10 +1,10 @@
 class Device {
   final int id;
   final String title;
-  final String link;
+  final List<String> links;
   final String content;
   final int deviceCathegoryId;
   final String imageUrl;
 
-  const Device ({this.id,this.title, this.link, this.content, this.deviceCathegoryId, this.imageUrl});
+  const Device ({this.id,this.title, this.links, this.content, this.deviceCathegoryId, this.imageUrl});
 }

@@ -11,7 +11,11 @@ class DeviceMenuPage  extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Blog"),),
+      appBar: AppBar(title: const Text("Urządzenia",
+        style: TextStyle(
+          fontFamily: "Dosis"
+        ),
+      ),),
       body: GridView(
       padding: const EdgeInsets.all(30),
       children: SampleDevicesData
@@ -19,7 +23,7 @@ class DeviceMenuPage  extends StatelessWidget {
         (deviceData) =>DeviceIcon(
          deviceData.id,
          deviceData.title,
-         deviceData.link,
+         deviceData.links,
          deviceData.content,
          deviceData.deviceCathegoryId,
          deviceData.imageUrl
