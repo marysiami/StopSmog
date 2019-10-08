@@ -15,53 +15,48 @@ class DevicePage extends StatelessWidget {
     final deviceCathegoryId = routeArgs['deviceCathegoryId'];
     final content = routeArgs['content'];
     final imageUrl = routeArgs['imageUrl'];
-
+    final name = routeArgs['name'];
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          title: Text(name),
         ),
         body: ListView(children: [
           CachedNetworkImage(
             placeholder: (context, url) => CircularProgressIndicator(),
             imageUrl: imageUrl,
           ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Text(
-              title,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white,),
-              textAlign: TextAlign.center,
-            )
+          Padding(child: ListTile(
+              title: Text(title, style: TextStyle(letterSpacing: 2, fontSize: 20, fontWeight: FontWeight.bold),textAlign: TextAlign.center,)
           ),
+            padding:  EdgeInsets.all(20),),
           Padding(
-            padding: EdgeInsets.only(left: 10,right: 10,top: 10),
-            child: Card(
-              child: Container(padding:  EdgeInsets.all(10) ,
-                child: Text(content),
-              ),
-            )
-          ),
+              padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+              child: Card(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(content,textAlign: TextAlign.justify, style: TextStyle(fontFamily: "Raleway")),
+                ),
+              )),
           Padding(
-            padding: EdgeInsets.only(left: 70, right: 70, top:10, bottom: 30) ,
-            child:
-              MaterialButton(
-                child: Text("ZOBACZ PRODUKT!"),
-               // onPressed: _launchURL(links[0]), //TODO: sprawdzić czemu nie działa otwieranie linków w nowej karcie!
-                onPressed: (){},
-                padding: EdgeInsets.all(20.0),
-                color: Colors.amber,
+              padding:
+                  EdgeInsets.only(left: 70, right: 70, top: 10, bottom: 30),
+              child: MaterialButton(
+                child: ListTile(
+                    leading: Icon(Icons.shopping_basket),
+                    title: Text("IDŹ DO SKLEPU",textAlign: TextAlign.center,)),
+                // onPressed: _launchURL(links[0]), //TODO: sprawdzić czemu nie działa otwieranie linków w nowej karcie!
+                onPressed: () {},
+                padding: EdgeInsets.all(10.0),
+                color: Colors.amberAccent,
                 elevation: 8,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)
-                ),
-              )
-          )
-
-
+                    borderRadius: BorderRadius.circular(10)),
+              ))
         ]));
   }
 }
+
 _launchURL(String url) async {
   if (await canLaunch(url)) {
     await launch(url);

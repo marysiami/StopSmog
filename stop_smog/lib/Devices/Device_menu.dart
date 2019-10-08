@@ -16,7 +16,7 @@ class DeviceMenuPage  extends StatelessWidget {
           fontFamily: "Dosis"
         ),
       ),),
-      body: GridView(
+      body: ListView(
       padding: const EdgeInsets.all(30),
       children: SampleDevicesData
       .map(
@@ -26,15 +26,11 @@ class DeviceMenuPage  extends StatelessWidget {
          deviceData.links,
          deviceData.content,
          deviceData.deviceCathegoryId,
-         deviceData.imageUrl
+         deviceData.imageUrl,
+         deviceData.name
         ),
         ).toList(), 
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-      maxCrossAxisExtent: 200, //szerokość
-      childAspectRatio: 3/2,
-      crossAxisSpacing:20, // odstepy pomiedzy kafelkami wszerz
-      mainAxisSpacing: 20, //odstępy pomiedzy kafelkami wys
-      ),
+
     )
     );
   }
