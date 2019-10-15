@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:stop_smog/Blog/Models/Post.dart';
 import 'package:stop_smog/Blog/Post_icon.dart' show PostIcon;
 import 'package:stop_smog/Blog/sample_data_blog.dart';
 import 'package:stop_smog/UI/text_style.dart';

@@ -29,7 +29,7 @@ class PostPage extends StatelessWidget{
           title: Text(author, style: TextStyle(letterSpacing: 3,fontSize: 10 ),textAlign: TextAlign.center,)
         ),
         padding:  EdgeInsets.all(1),),
-        
+
         Padding(
           child: Text(content, style: TextStyle(fontSize: 14 )),
           padding:  EdgeInsets.only(right: 20, left:20),
