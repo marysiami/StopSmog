@@ -3,13 +3,6 @@ import 'package:flutter/material.dart';
 
 class PostPage extends StatelessWidget{
   static const routeName = '/post'; 
-  // final int id;
-  // final String title; 
-  // final List<String> keyWords;
-  // final String author;
-  // final String content;
-
-  // PostPage(this.id, this.title, this.keyWords, this.author, this.content);  //cntrl+K+C komentowanie
 
   @override
   Widget build (BuildContext context){
@@ -35,7 +28,8 @@ class PostPage extends StatelessWidget{
         Padding(child: ListTile(
           title: Text(author, style: TextStyle(letterSpacing: 3,fontSize: 10 ),textAlign: TextAlign.center,)
         ),
-        padding:  EdgeInsets.all(3),),
+        padding:  EdgeInsets.all(1),),
+        
         Padding(
           child: Text(content, style: TextStyle(fontSize: 14 )),
           padding:  EdgeInsets.only(right: 20, left:20),

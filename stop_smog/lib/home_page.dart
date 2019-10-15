@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:stop_smog/Blog/Blog_menu_page.dart';
 import 'package:stop_smog/Devices/Device_menu.dart';
-
+import 'package:stop_smog/Quiz/Quiz_page.dart';
+import 'package:stop_smog/Video/Youtube_player.dart';
 
 
 class HomePage extends StatelessWidget {
-
   static const routeName = '/home';
 
-  void selectItem(BuildContext ctx, String routeName){
+  void selectItem(BuildContext ctx, String routeName) {
     Navigator.of(ctx).pushNamed(routeName);
   }
 
@@ -24,39 +24,39 @@ class HomePage extends StatelessWidget {
               size: 30.0,
             ),
             title: Text('Blog'),
-            onTap: ()=>selectItem(context,BlogMenuPage.routeName),
+            onTap: () => selectItem(context, BlogMenuPage.routeName),
           ),
         ),
         Card(
           child: ListTile(
-            leading: Icon(
-              Icons.devices_other,
-              color: Colors.green,
-              size: 30.0,
-            ),
-            title: Text('Devices'),
-            onTap: ()=>selectItem(context,DeviceMenuPage.routeName)
-          ),
+              leading: Icon(
+                Icons.devices_other,
+                color: Colors.green,
+                size: 30.0,
+              ),
+              title: Text('Devices'),
+              onTap: () => selectItem(context, DeviceMenuPage.routeName)),
         ),
         Card(
           child: ListTile(
-            leading: Icon(
-              Icons.thumbs_up_down,
-              color: Colors.redAccent,
-              size: 30.0,
-            ),
-            title: Text('Quiz'),
-          ),
+              leading: Icon(
+                Icons.thumbs_up_down,
+                color: Colors.redAccent,
+                size: 30.0,
+              ),
+              title: Text('Quiz'),
+              onTap: () => selectItem(context, QuizPage.routeName)),
         ),
+
         Card(
           child: ListTile(
-            leading: Icon(
-              Icons.movie,
-              color: Colors.amber,
-              size: 30.0,
-            ),
-            title: Text('Movies'),
-          ),
+              leading: Icon(
+                Icons.youtube_searched_for,
+                color: Colors.pink,
+                size: 30.0,
+              ),
+              title: Text('Youtube'),
+              onTap: () => selectItem(context, YoutubePlayerPage.routeName)),
         )
       ],
     );
