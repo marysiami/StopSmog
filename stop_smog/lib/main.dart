@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:stop_smog/Devices/Device_menu.dart';
 import 'package:stop_smog/Devices/Device_page.dart';
 import 'package:stop_smog/home_page.dart';
@@ -7,6 +8,7 @@ import 'Blog/Blog_menu_page.dart';
 import 'Blog/Post_page.dart';
 import 'Quiz/Quiz_page.dart';
 import 'Video/Youtube_player.dart';
+import 'app_localizations.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,8 +21,30 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.grey[100],
         canvasColor: Colors.grey[100],
         fontFamily: 'Raleway',
-
       ),
+      supportedLocales: [
+        Locale('en','US'),
+        Locale('pl','PL')
+      ],
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+
+        localeResolutionCallback: (locale, supportedLocales) {
+          // Check if the current device locale is supported
+          for (var supportedLocale in supportedLocales) {
+            if (supportedLocale.languageCode == locale.languageCode &&
+                supportedLocale.countryCode == locale.countryCode) {
+              return supportedLocale;
+            }
+          }
+          // If the locale of the device is not supported, use the first one
+          // from the list (English, in this case).
+          return supportedLocales.first;
+        },
+
       home: HomePage(),  //TO POKAZUJE NAJGŁOWNIEJSZY PAGE!
       routes:{
         // '/': (ctx) =>HomePage(), //TO POKAZUJE NAJGŁOWNIEJSZY PAGE!

@@ -11,7 +11,7 @@ class DeviceMenuPage  extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Urządzenia",
+      appBar: AppBar(title: const Text("Devices",
         style: TextStyle(
           fontFamily: "Dosis"
         ),

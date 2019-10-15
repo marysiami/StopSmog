@@ -44,7 +44,7 @@ class DevicePage extends StatelessWidget {
               child: MaterialButton(
                 child: ListTile(
                     leading: Icon(Icons.shopping_basket),
-                    title: Text("IDŹ DO SKLEPU",textAlign: TextAlign.center,)),
+                    title: Text("SHOP NOW",textAlign: TextAlign.center,)),
                 // onPressed: _launchURL(links[0]), //TODO: sprawdzić czemu nie działa otwieranie linków w nowej karcie!
                 onPressed: () {},
                 padding: EdgeInsets.all(10.0),

@@ -4,6 +4,8 @@ import 'package:stop_smog/Devices/Device_menu.dart';
 import 'package:stop_smog/Quiz/Quiz_page.dart';
 import 'package:stop_smog/Video/Youtube_player.dart';
 
+import 'app_localizations.dart';
+
 class HomePage extends StatelessWidget {
   static const routeName = '/home';
 
@@ -14,7 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(title: Text("Home")),
+        appBar: new AppBar(title: Text("StopSmog"), centerTitle: true,),
         drawer: new Drawer(
           child: new ListView(
             children: <Widget>[
@@ -44,7 +46,7 @@ class HomePage extends StatelessWidget {
                       color: Colors.green,
                       size: 30.0,
                     ),
-                    title: Text('Devices'),
+                    title: Text(AppLocalizations.of(context).translate('Devices')),
                     onTap: () => selectItem(context, DeviceMenuPage.routeName)),
               ),
               Card(
@@ -64,7 +66,7 @@ class HomePage extends StatelessWidget {
                       color: Colors.red,
                       size: 30.0,
                     ),
-                    title: Text('YouTube movies'),
+                    title: Text(AppLocalizations.of(context).translate('Movies')),
                     onTap: () =>
                         selectItem(context, YoutubePlayerPage.routeName)),
               )
