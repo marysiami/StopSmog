@@ -25,6 +25,7 @@ class Result extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       child: Column(
+
         children: <Widget>[
           Padding(
             child: Text(

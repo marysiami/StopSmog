@@ -4,6 +4,8 @@ import 'package:stop_smog/Devices/Device_menu.dart';
 import 'package:stop_smog/Quiz/Quiz_page.dart';
 import 'package:stop_smog/Video/Youtube_player.dart';
 
+import 'Post/New_point_steps.dart';
+import 'Post/Station_List.dart';
 import 'app_localizations.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,6 +28,17 @@ class HomePage extends StatelessWidget {
                 currentAccountPicture: new CircleAvatar(
                   backgroundColor: Colors.blueAccent,
                   child: new Text("MZ"),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.pin_drop,
+                    color: Colors.lightGreenAccent,
+                    size: 30.0,
+                  ),
+                  title: Text('Dodaj punkt'),
+                  onTap: () => selectItem(context, NewPointSteps.routeName),
                 ),
               ),
               Card(
@@ -69,6 +82,17 @@ class HomePage extends StatelessWidget {
                     title: Text(AppLocalizations.of(context).translate('Movies')),
                     onTap: () =>
                         selectItem(context, YoutubePlayerPage.routeName)),
+              ),
+              Card(
+                child: ListTile(
+                    leading: Icon(
+                      Icons.map,
+                      color: Colors.deepOrangeAccent,
+                      size: 30.0,
+                    ),
+                    title: Text("Stacje"),
+                    onTap: () =>
+                        selectItem(context, StationListScreen.routeName)),
               )
             ],
           ),

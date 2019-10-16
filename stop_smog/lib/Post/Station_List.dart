@@ -1,0 +1,68 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:stop_smog/Post/Models/Station.dart';
+
+import 'API.dart';
+import 'Models/City.dart';
+import 'Station_details.dart';
+
+class StationListScreen extends StatefulWidget {
+  static const routeName = '/stations_repository';
+  @override
+  createState() => _StationListScreenState();
+}
+
+class _StationListScreenState extends State {
+  var stations = new List<Station>();
+
+  _getStations() {
+    API.getAllStations().then((response) {
+      setState(() {
+        Iterable list = json.decode(response.body);
+        stations = list.map((model) => Station.fromJson(model)).toList();
+      });
+    });
+  }
+
+  void selectItem(BuildContext ctx, String routeName) {
+    Navigator.of(ctx).pushNamed(routeName);
+  }
+
+  initState() {
+    super.initState();
+    _getStations();
+  }
+
+  dispose() {
+    super.dispose();
+  }
+
+  @override
+  build(context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Stations List"),
+        ),
+        body: ListView.builder(
+          itemCount: stations.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+                title: Text(stations[index].stationName),
+                subtitle: Text(stations[index].city == null
+                    ? stations[index].stationName
+                    : stations[index].city.name),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: () => Navigator.of(context)
+                        .pushNamed(StationDetails.routeName, arguments: {
+                      'id': stations[index].id,
+                      'stationName': stations[index].stationName,
+                      'gegrLat': stations[index].gegrLat,
+                      'gegrLon': stations[index].gegrLon,
+                      'city': stations[index].city,
+                      'addressStreet': stations[index].addressStreet
+                    }));
+          },
+        ));
+  }
+}

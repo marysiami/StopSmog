@@ -37,9 +37,12 @@ class DeviceIcon  extends StatelessWidget {
       child: Container(
         child:  Card(
           child: ListTile(
+            leading: CircleAvatar(
+              backgroundImage: NetworkImage(imageUrl),
+            ),
             title: Text(name, style: TextStyle(fontSize: 20),softWrap: true,),
             subtitle: Text(title,softWrap: true,style:TextStyle(fontSize: 10)),
-            trailing: Icon(Icons.info),
+            trailing: Icon(Icons.arrow_forward_ios),
           ),
         ),
 //        decoration: BoxDecoration(gradient: LinearGradient(

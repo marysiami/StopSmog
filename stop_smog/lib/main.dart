@@ -6,6 +6,9 @@ import 'package:stop_smog/home_page.dart';
 
 import 'Blog/Blog_menu_page.dart';
 import 'Blog/Post_page.dart';
+import 'Post/New_point_steps.dart';
+import 'Post/Station_List.dart';
+import 'Post/Station_details.dart';
 import 'Quiz/Quiz_page.dart';
 import 'Video/Youtube_player.dart';
 import 'app_localizations.dart';
@@ -54,7 +57,10 @@ class MyApp extends StatelessWidget {
         DevicePage.routeName: (ctx) => DevicePage(),
         HomePage.routeName:(ctx) => HomePage(),
         QuizPage.routeName:(ctx) => QuizPage(),
-        YoutubePlayerPage.routeName:(ctx) =>YoutubePlayerPage()
+        YoutubePlayerPage.routeName:(ctx) =>YoutubePlayerPage(),
+        StationListScreen.routeName:(ctx) =>StationListScreen(),
+        NewPointSteps.routeName:(ctx) =>NewPointSteps(),
+        StationDetails.routeName:(ctx) => StationDetails()
       }
     );
   }
