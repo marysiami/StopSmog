@@ -1,4 +1,9 @@
 {
   "Devices": "Urządzenia",
-  "Movies": "Filmy o smogu"
+  "Movies": "Filmy o smogu",
+  "AllStations": "Dostępne stacje",
+  "StationDetails": "Szczegóły stacji",
+  "StationList": "Wybierz stację z listy",
+  "NoInfo": "Brak danych",
+  "MeasuringStations": "Dostępne stanowiska pomiarowe"
 }

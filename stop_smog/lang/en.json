@@ -1,4 +1,9 @@
 {
   "Devices": "Devices",
-  "Movies": "YouTube Smog movies"
+  "Movies": "YouTube Smog movies",
+  "AllStations": "All Stations",
+  "StationDetails": "Station details",
+  "StationList": "Select a station from the list",
+  "NoInfo": "No info",
+  "MeasuringStations": "Available measuring stations",
 }

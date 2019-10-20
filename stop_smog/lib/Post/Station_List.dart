@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:stop_smog/Post/Models/Station.dart';
 
+import '../app_localizations.dart';
 import 'API.dart';
-import 'Models/City.dart';
 import 'Station_details.dart';
 
 class StationListScreen extends StatefulWidget {
@@ -42,7 +42,7 @@ class _StationListScreenState extends State {
   build(context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Stations List"),
+          title: Text(AppLocalizations.of(context).translate('StationList')),
         ),
         body: ListView.builder(
           itemCount: stations.length,
@@ -57,10 +57,10 @@ class _StationListScreenState extends State {
                         .pushNamed(StationDetails.routeName, arguments: {
                       'id': stations[index].id,
                       'stationName': stations[index].stationName,
-                      'gegrLat': stations[index].gegrLat,
-                      'gegrLon': stations[index].gegrLon,
+                      'gegrLat': stations[index].gegrLat != null? stations[index].gegrLat: AppLocalizations.of(context).translate('NoInfo') ,
+                      'gegrLon': stations[index].gegrLon != null? stations[index].gegrLon: AppLocalizations.of(context).translate('NoInfo'),
                       'city': stations[index].city,
-                      'addressStreet': stations[index].addressStreet
+                      'addressStreet': stations[index].addressStreet != null? stations[index].addressStreet: "",
                     }));
           },
         ));

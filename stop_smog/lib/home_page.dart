@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget {
                       color: Colors.deepOrangeAccent,
                       size: 30.0,
                     ),
-                    title: Text("Stacje"),
+                    title: Text(AppLocalizations.of(context).translate('AllStations')),
                     onTap: () =>
                         selectItem(context, StationListScreen.routeName)),
               )
