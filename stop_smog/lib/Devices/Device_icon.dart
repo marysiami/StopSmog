@@ -22,10 +22,10 @@ class DeviceIcon  extends StatelessWidget {
     //   return PostPage(id,title,keyWords,author,content);
     // }
     // ));
-    .pushNamed(
-      DevicePage.routeName,
-      arguments: {'id': id,'title': title,'links': links,'content': content,'deviceCathegoryId': deviceCathegoryId,'imageUrl': imageUrl,'name': name}
-      );
+        .pushNamed(
+        DevicePage.routeName,
+        arguments: {'id': id,'title': title,'links': links,'content': content,'deviceCathegoryId': deviceCathegoryId,'imageUrl': imageUrl,'name': name}
+    );
   }
 
   @override

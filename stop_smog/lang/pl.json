@@ -5,5 +5,6 @@
   "StationDetails": "Szczegóły stacji",
   "StationList": "Wybierz stację z listy",
   "NoInfo": "Brak danych",
-  "MeasuringStations": "Dostępne stanowiska pomiarowe"
+  "MeasuringStations": "Dostępne stanowiska pomiarowe",
+  "ParametrHistory": "Historyczne dane parametru"
 }
