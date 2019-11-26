@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:stop_smog/Devices/Device_menu.dart';
 import 'package:stop_smog/Devices/Device_page.dart';
+import 'package:stop_smog/Infographic/Infographic_Page.dart';
 import 'package:stop_smog/home_page.dart';
 
 import 'Blog/Blog_menu_page.dart';
 import 'Blog/Post_page.dart';
 import 'Post/New_point_steps.dart';
 import 'Post/Param_history.dart';
+import 'Post/StationList_Filter.dart';
 import 'Post/Station_List.dart';
 import 'Post/Station_details.dart';
 import 'Quiz/Quiz_page.dart';
+import 'Splash_Screen.dart';
 import 'Video/Youtube_player.dart';
 import 'app_localizations.dart';
 
@@ -49,7 +52,7 @@ class MyApp extends StatelessWidget {
           return supportedLocales.first;
         },
 
-      home: HomePage(),  //TO POKAZUJE NAJGŁOWNIEJSZY PAGE!
+      home: SplashScreen(),  //TO POKAZUJE NAJGŁOWNIEJSZY PAGE!
       routes:{
         // '/': (ctx) =>HomePage(), //TO POKAZUJE NAJGŁOWNIEJSZY PAGE!
         BlogMenuPage.routeName: (ctx) => BlogMenuPage(),
@@ -62,7 +65,10 @@ class MyApp extends StatelessWidget {
         StationListScreen.routeName:(ctx) =>StationListScreen(),
         NewPointSteps.routeName:(ctx) =>NewPointSteps(),
         StationDetails.routeName:(ctx) => StationDetails(),
-        ParamHistoryScreen.routeName:(ctx)=>ParamHistoryScreen()
+        InfographicPage1.routeName:(ctx)=>InfographicPage1(),
+        InfographicPage2.routeName:(ctx)=>InfographicPage2(),
+        InfographicPage3.routeName:(ctx)=>InfographicPage3(),
+        StationFilter.routeName:(ctx) =>StationFilter()
       }
     );
   }

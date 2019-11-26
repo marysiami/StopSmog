@@ -6,5 +6,8 @@
   "StationList": "Select a station from the list",
   "NoInfo": "No info",
   "MeasuringStations": "Available measuring stations",
-  "ParametrHistory": "Historical parameter data"
+  "ParametrHistory": "Historical parameter data",
+  "Info1": "Smog in Poland",
+  "info2": "Fight against smog",
+  "Info3": "Smog vs Health"
 }

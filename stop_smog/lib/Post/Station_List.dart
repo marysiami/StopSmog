@@ -61,7 +61,8 @@ class _StationListScreenState extends State {
                       'gegrLon': stations[index].gegrLon != null? stations[index].gegrLon: AppLocalizations.of(context).translate('NoInfo'),
                       'city': stations[index].city,
                       'addressStreet': stations[index].addressStreet != null? stations[index].addressStreet: "",
-                    }));
+                    })
+            );
           },
         ));
   }

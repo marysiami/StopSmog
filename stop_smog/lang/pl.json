@@ -6,5 +6,8 @@
   "StationList": "Wybierz stację z listy",
   "NoInfo": "Brak danych",
   "MeasuringStations": "Dostępne stanowiska pomiarowe",
-  "ParametrHistory": "Historyczne dane parametru"
+  "ParametrHistory": "Historyczne dane parametru",
+  "Info1": "Smog w Polsce",
+  "Info2": "Walka ze smogiem",
+  "Info3": "Smog vs Twoje zdrowie"
 }
