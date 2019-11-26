@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "832928415486",
+    "firebase_url": "https://stopsmog-39a56.firebaseio.com",
+    "project_id": "stopsmog-39a56",
+    "storage_bucket": "stopsmog-39a56.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832928415486:android:9e15dc1f54a4834a1fefaf",
+        "android_client_info": {
+          "package_name": "com.example.stop_smog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832928415486-c7tqpm2ls7cumedv70clpuh0ebh5n20b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.stop_smog",
+            "certificate_hash": "c30e28db516690be197897548a2bd291e4b8b6f3"
+          }
+        },
+        {
+          "client_id": "832928415486-uoqs82lkjsrf8t8uksgjbgchdbp838eq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoKueCSMopmrCGvko1wuPVkMiY9AHe6_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832928415486-uoqs82lkjsrf8t8uksgjbgchdbp838eq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
