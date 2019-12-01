@@ -40,30 +40,34 @@ class _StationListScreenState extends State {
 
   @override
   build(context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(AppLocalizations.of(context).translate('StationList')),
-        ),
-        body: ListView.builder(
-          itemCount: stations.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-                title: Text(stations[index].stationName),
-                subtitle: Text(stations[index].city == null
-                    ? stations[index].stationName
-                    : stations[index].city.name),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                onTap: () => Navigator.of(context)
-                        .pushNamed(StationDetails.routeName, arguments: {
-                      'id': stations[index].id,
-                      'stationName': stations[index].stationName,
-                      'gegrLat': stations[index].gegrLat != null? stations[index].gegrLat: AppLocalizations.of(context).translate('NoInfo') ,
-                      'gegrLon': stations[index].gegrLon != null? stations[index].gegrLon: AppLocalizations.of(context).translate('NoInfo'),
-                      'city': stations[index].city,
-                      'addressStreet': stations[index].addressStreet != null? stations[index].addressStreet: "",
-                    })
-            );
-          },
-        ));
+    return ListView.builder(
+        itemCount: stations.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+              title: Text(stations[index].stationName),
+              subtitle: Text(stations[index].city == null
+                  ? stations[index].stationName
+                  : stations[index].city.name),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () =>
+                  Navigator.of(context)
+                      .pushNamed(StationDetails.routeName, arguments: {
+                    'id': stations[index].id,
+                    'stationName': stations[index].stationName,
+                    'gegrLat': stations[index].gegrLat != null ? stations[index]
+                        .gegrLat : AppLocalizations.of(context).translate(
+                        'NoInfo'),
+                    'gegrLon': stations[index].gegrLon != null ? stations[index]
+                        .gegrLon : AppLocalizations.of(context).translate(
+                        'NoInfo'),
+                    'city': stations[index].city,
+                    'addressStreet': stations[index].addressStreet != null
+                        ? stations[index].addressStreet
+                        : "",
+                  })
+          );
+        }
+    );
+
   }
 }
