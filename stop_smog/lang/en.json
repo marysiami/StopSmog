@@ -28,5 +28,6 @@
   "Name": "Name",
   "LastName": "LastName",
   "SignUp": "Sign Up",
-  "HaveAccount?": "Have Account?"
+  "HaveAccount?": "Have Account?",
+  "Search": "Search Station Name.."
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fcharts/fcharts.dart';
 import 'package:stop_smog/Auth/Models/state.dart';
 import 'package:stop_smog/Auth/UI/Screens/sign_in.dart';
 import 'package:stop_smog/Auth/UI/Widgets/loading.dart';
@@ -24,9 +25,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
   }
+
   void selectItem(BuildContext ctx, String routeName) {
     Navigator.of(ctx).pushNamed(routeName);
   }
+
   Widget build(BuildContext context) {
     appState = StateWidget.of(context).state;
     if (!appState.isLoading &&
@@ -41,6 +44,30 @@ class _HomeScreenState extends State<HomeScreen> {
         _loadingVisible = false;
       }
 
+      const myData = [
+        ["A", "✔"],
+        ["B", "❓"],
+        ["C", "✖"],
+        ["D", "❓"],
+        ["E", "✖"],
+        ["F", "✖"],
+        ["G", "✔"],
+      ];
+
+      Container lineChart = new Container(
+        child: new LineChart(
+          lines: [
+            new Line<List<String>, String, String>(
+              data: myData,
+              xFn: (datum) => datum[0],
+              yFn: (datum) => datum[1],
+            ),
+          ],
+          chartPadding: new EdgeInsets.fromLTRB(30.0, 10.0, 10.0, 30.0),
+        ),
+        height: 250,
+      );
+
       final signOutButton = Padding(
         padding: EdgeInsets.symmetric(vertical: 16.0),
         child: RaisedButton(
@@ -52,33 +79,37 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           padding: EdgeInsets.all(12),
           color: Theme.of(context).primaryColor,
-          child: Text(AppLocalizations.of(context).translate('SignOut'), style: TextStyle(color: Colors.white)),
+          child: Text(AppLocalizations.of(context).translate('SignOut'),
+              style: TextStyle(color: Colors.white)),
         ),
       );
 
-      final userId = appState?.firebaseUserAuth?.uid ?? '';
+
       final email = appState?.firebaseUserAuth?.email ?? '';
       final firstName = appState?.user?.firstName ?? '';
       final lastName = appState?.user?.lastName ?? '';
-      final settingsId = appState?.settings?.settingsId ?? '';
-      final userIdLabel = Text('App Id: ');
-      final emailLabel = Text('Email: ');
-      final firstNameLabel = Text('First Name: ');
-      final lastNameLabel = Text('Last Name: ');
-      final settingsIdLabel = Text('SetttingsId: ');
+
 
       return Scaffold(
         backgroundColor: Colors.white,
-        appBar: new AppBar(title: Text("StopSmog"), centerTitle: true,),
+        appBar: new AppBar(
+          title: Text("Let's Stop Smog Now!"),
+          centerTitle: true,
+        ),
         drawer: new Drawer(
           child: new ListView(
             children: <Widget>[
               new UserAccountsDrawerHeader(
-                accountName: new Text(firstName +" " +lastName, style: TextStyle(fontSize: 18),),
+                accountName: new Text(
+                  firstName + " " + lastName,
+                  style: TextStyle(fontSize: 18),
+                ),
                 accountEmail: new Text(email),
                 currentAccountPicture: new CircleAvatar(
-                  backgroundColor: Colors.blueAccent,
-                  child: new Text(firstName.substring(0,1)+lastName.substring(0,1),style: TextStyle(fontSize: 20)),
+                  backgroundColor: Colors.white,
+                  child: new Text(
+                      firstName.substring(0, 1) + lastName.substring(0, 1),
+                      style: TextStyle(fontSize: 20)),
                 ),
               ),
               Card(
@@ -92,7 +123,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () => selectItem(context, NewPointSteps.routeName),
                 ),
               ),
-
               Card(
                 child: ListTile(
                     leading: Icon(
@@ -100,12 +130,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.teal,
                       size: 30.0,
                     ),
-                    title: Text(AppLocalizations.of(context).translate('AllStations')),
-                    onTap: () =>
-                        selectItem(context, StationFilter.routeName)),
+                    title: Text(
+                        AppLocalizations.of(context).translate('AllStations')),
+                    onTap: () => selectItem(context, StationFilter.routeName)),
               ),
-
-
               Card(
                 child: ListTile(
                     leading: Icon(
@@ -116,8 +144,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: Text('Quiz'),
                     onTap: () => selectItem(context, QuizPage.routeName)),
               ),
-
-
               Card(
                 child: ListTile(
                     leading: Icon(
@@ -125,10 +151,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.red,
                       size: 30.0,
                     ),
-                    title: Text(AppLocalizations.of(context).translate('Info1')),
+                    title:
+                        Text(AppLocalizations.of(context).translate('Info1')),
                     subtitle: Text("Infografika"),
-                    onTap: ()=>{ selectItem(context, InfographicPage1.routeName)}),
-
+                    onTap: () =>
+                        {selectItem(context, InfographicPage1.routeName)}),
               ),
               Card(
                 child: ListTile(
@@ -137,12 +164,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.red,
                       size: 30.0,
                     ),
-                    title: Text(AppLocalizations.of(context).translate('Info2')),
+                    title:
+                        Text(AppLocalizations.of(context).translate('Info2')),
                     subtitle: Text("Infografika"),
-                    onTap: ()=>{ selectItem(context, InfographicPage2.routeName)}),
-
+                    onTap: () =>
+                        {selectItem(context, InfographicPage2.routeName)}),
               ),
-
               Card(
                 child: ListTile(
                     leading: Icon(
@@ -150,10 +177,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.red,
                       size: 30.0,
                     ),
-                    title: Text(AppLocalizations.of(context).translate('Info3')),
+                    title:
+                        Text(AppLocalizations.of(context).translate('Info3')),
                     subtitle: Text("Infografika"),
-                    onTap: ()=>{ selectItem(context, InfographicPage3.routeName)}),
-
+                    onTap: () =>
+                        {selectItem(context, InfographicPage3.routeName)}),
               ),
               Card(
                 child: ListTile(
@@ -162,7 +190,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.green,
                       size: 30.0,
                     ),
-                    title: Text(AppLocalizations.of(context).translate('Devices')),
+                    title:
+                        Text(AppLocalizations.of(context).translate('Devices')),
                     onTap: () => selectItem(context, DeviceMenuPage.routeName)),
               ),
               Card(
@@ -183,23 +212,205 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.black,
                       size: 30.0,
                     ),
-                    title: Text(AppLocalizations.of(context).translate('Movies')),
+                    title:
+                        Text(AppLocalizations.of(context).translate('Movies')),
                     onTap: () =>
                         selectItem(context, YoutubePlayerPage.routeName)),
               ),
               signOutButton
-
             ],
           ),
         ),
         body: LoadingScreen(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 48.0),
-              child: Center(
-              ),
+            child: new ListView(
+                children: <Widget>[
+                  new Container(
+                    child: ListTile(
+                      title: Text(
+                        "Witaj  $firstName!",
+                        style: TextStyle(
+                            fontSize: 40, fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text("Masz wybrane następujące stacje: ...."),
+                    ),
+                    margin: new EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 30),
+                  ),
+                  new Container(
+                      child: getBoxWithData(
+                          Colors.teal,
+                          Colors.amberAccent,
+                          Colors.green,
+                          "Nazwa stacji testowa",
+                          "Nazwa miasta test",
+                          "PM 2,5",
+                          "100,222",
+                          context,
+                          lineChart)),
+                  new Container(
+                      child: getBoxWithData(
+                          Colors.redAccent,
+                          Colors.black,
+                          Colors.red,
+                          "Nazwa stacji testowa2",
+                          "Nazwa miasta test",
+                          "PM 10",
+                          "177752",
+                          context,
+                          lineChart)),
+                  // SimpleLineChart.withSampleData()
+                ],
+
             ),
             inAsyncCall: _loadingVisible),
       );
     }
   }
+}
+
+getBoxWithData(
+    Color color1,
+    Color color2,
+    Color back,
+    String statnioName,
+    String city,
+    String paramName,
+    String value,
+    BuildContext context,
+    Container lineChart) {
+  return new Container(
+      height: 200.0,
+      margin: new EdgeInsets.all(10.0),
+      decoration: new BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: back,
+            blurRadius: 20.0, // has the effect of softening the shadow
+            spreadRadius: 5.0, // has the effect of extending the shadow
+            offset: Offset(
+              10.0, // horizontal, move right 10
+              10.0, // vertical, move down 10
+            ),
+          )
+        ],
+        borderRadius: new BorderRadius.all(new Radius.circular(10.0)),
+        gradient: new LinearGradient(colors: [color1, color2]),
+      ),
+      child: new Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new Padding(
+              padding: new EdgeInsets.only(left: 10.0, right: 10.0),
+            ),
+            new Expanded(
+              child: new Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    new Text(
+                      city,
+                      style: new TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white70,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    new SizedBox(
+                      height: 8.0,
+                    ),
+                    new Text(
+                      statnioName,
+                      style:
+                          new TextStyle(fontSize: 12.0, color: Colors.white70),
+                    ),
+                    new SizedBox(
+                      height: 10.0,
+                    ),
+                    new Row(
+                      children: <Widget>[
+                        new Column(
+                          children: <Widget>[
+                            new Text('powietrze jest super czyste',
+                                style: new TextStyle(
+                                    fontSize: 12.0, color: Colors.white)),
+                          ],
+                        ),
+                        new Padding(
+                          padding: new EdgeInsets.only(left: 50.0, right: 10.0),
+                          child: new Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                new Text(
+                                  value,
+                                  style: new TextStyle(
+                                      fontSize: 30.0,
+                                      color: Colors.white70,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                new Text(
+                                  paramName,
+                                  style: new TextStyle(
+                                      fontSize: 14.0, color: Colors.white70),
+                                ),
+                                new FlatButton(
+                                  onPressed: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+//                                      return AlertDialog(
+//                                          title: new Text("Alert Dialog title"),
+//                                        content: SingleChildScrollView(
+//                                      child: ListBody(
+//                                      children: <Widget>[
+//                                          lineChart,
+//                                          new FlatButton(
+//                                            child: new Text("Close"),
+//                                            onPressed: () {
+//                                              Navigator.of(context).pop();
+//                                            },
+//                                          )
+//                                        ],),),
+//                                        contentPadding: EdgeInsets.all(8.0),
+//
+//                                      );
+                                          return AlertDialog(
+                                            title: Text('Rewind and remember'),
+                                            content: SingleChildScrollView(
+                                              child: ListBody(
+                                                children: <Widget>[
+                                                  Text(
+                                                      'You will never be satisfied.'),
+                                                  Text(
+                                                      'You\’re like me. I’m never satisfied.'),
+                                                  lineChart,
+                                                ],
+                                              ),
+                                            ),
+                                            actions: <Widget>[
+                                              FlatButton(
+                                                child: Text(
+                                                  'Zamknij',
+                                                  style: TextStyle(
+                                                      color: Colors.black),
+                                                ),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              ),
+                                            ],
+                                          );
+                                        });
+                                  },
+                                  child: new Icon(
+                                    Icons.history,
+                                    color: color1,
+                                    size: 30,
+                                  ),
+                                ),
+                              ]),
+                        )
+                      ],
+                    ),
+                  ]),
+            )
+          ]));
 }

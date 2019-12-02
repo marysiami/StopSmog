@@ -8,22 +8,19 @@ import 'API.dart';
 import 'Station_details.dart';
 
 class StationFilter extends StatefulWidget {
-  // ExamplePage({ Key key }) : super(key: key);
   static const routeName = '/stations_filter';
   @override
   _StationFilterState createState() => new _StationFilterState();
 }
 
 class _StationFilterState extends State<StationFilter> {
-  // final formKey = new GlobalKey<FormState>();
-  // final key = new GlobalKey<ScaffoldState>();
   final TextEditingController _filter = new TextEditingController();
 
   String _searchText = "";
   List names = new List();
   List filteredNames = new List();
   Icon _searchIcon = new Icon(Icons.search);
-  Widget _appBarTitle = new Text('Search Example');
+  Widget _appBarTitle;
   List stations = new List();
 
   _StationFilterState() {
@@ -129,12 +126,12 @@ class _StationFilterState extends State<StationFilter> {
         this._appBarTitle = new TextField(
           controller: _filter,
           decoration: new InputDecoration(
-              prefixIcon: new Icon(Icons.search), hintText: 'Search...'),
+              prefixIcon: new Icon(Icons.search), hintText: AppLocalizations.of(context).translate('Search')),
         );
       } else {
         this._searchIcon = new Icon(Icons.search);
         this._appBarTitle =
-            new Text(AppLocalizations.of(context).translate('StationList'));
+            new Text(AppLocalizations.of(context).translate('Search'));
         filteredNames = names;
         _filter.clear();
       }
