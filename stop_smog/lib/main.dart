@@ -23,23 +23,14 @@ import 'Splash_Screen.dart';
 import 'Video/Youtube_player.dart';
 import 'app_localizations.dart';
 
-void main() {
-  StateWidget stateWidget = new StateWidget(
-    child: new MyApp(),
-  );
-  runApp(stateWidget);
-}
-
 class MyApp extends StatelessWidget {
+  MyApp() {
+    //Navigation.initPaths();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-//      theme: ThemeData(
-//        primarySwatch: Colors.grey,
-//        accentColor: Colors.grey[100],
-//        canvasColor: Colors.grey[100],
-//        fontFamily: 'Raleway',
-//      ),
+        title: "Let's Stop Smog Now!",
         theme: buildTheme(),
         debugShowCheckedModeBanner: false,
         supportedLocales: [Locale('en', 'US'), Locale('pl', 'PL')],
@@ -60,7 +51,7 @@ class MyApp extends StatelessWidget {
           // from the list (English, in this case).
           return supportedLocales.first;
         },
-        home: SplashScreen(), //TO POKAZUJE NAJGŁOWNIEJSZY PAGE!
+       // home: SplashScreen(), //TO POKAZUJE NAJGŁOWNIEJSZY PAGE!
         routes: {
           '/': (context) => HomeScreen(),
           '/signin': (context) => SignInScreen(),
@@ -71,7 +62,7 @@ class MyApp extends StatelessWidget {
           PostPage.routeName: (ctx) => PostPage(),
           DeviceMenuPage.routeName: (ctx) => DeviceMenuPage(),
           DevicePage.routeName: (ctx) => DevicePage(),
-          HomePage.routeName: (ctx) => HomePage(),
+         // HomePage.routeName: (ctx) => HomePage(),
           QuizPage.routeName: (ctx) => QuizPage(),
           YoutubePlayerPage.routeName: (ctx) => YoutubePlayerPage(),
           StationListScreen.routeName: (ctx) => StationListScreen(),
@@ -83,4 +74,11 @@ class MyApp extends StatelessWidget {
           StationFilter.routeName: (ctx) => StationFilter()
         });
   }
+}
+
+void main() {
+  StateWidget stateWidget = new StateWidget(
+    child: new MyApp(),
+  );
+  runApp(stateWidget);
 }
