@@ -1,13 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../app_localizations.dart';
 import 'Models/City.dart';
 import 'Station_details_list.dart';
 
-class StationDetails extends StatelessWidget {
+class StationDetails extends StatefulWidget {
   static const routeName = '/stations_details';
 
+  @override
+  State<StatefulWidget> createState() {
+    return _StationDetailsextends();
+  }
+
+}
+class _StationDetailsextends extends State<StationDetails> {
+  GoogleMapController mapController;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
   @override
   Widget build(BuildContext context) {
     final routeArgs =
@@ -19,6 +39,7 @@ class StationDetails extends StatelessWidget {
     final City city = routeArgs['city'];
     final String addressStreet = routeArgs['addressStreet'];
 
+    final LatLng _center = LatLng( double.parse(gegrLat), double.parse(gegrLon));
     var details = StationDetailsListScreen(stationId: id);
     details.createState();
 
@@ -38,7 +59,13 @@ class StationDetails extends StatelessWidget {
           ),
           Row(
             children: <Widget>[
-              Card(), //tu dodać mapę z google maps
+              Card(child:  GoogleMap(
+                onMapCreated: _onMapCreated,
+                initialCameraPosition: CameraPosition(
+                  target: _center,
+                  zoom: 11.0,
+                ),
+              ),), //tu dodać mapę z google maps
               Container(
                 color: Colors.blue[50],
                 height: 80,
@@ -63,4 +90,6 @@ class StationDetails extends StatelessWidget {
           ),
         ]));
   }
+
+
 }
