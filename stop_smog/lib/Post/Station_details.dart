@@ -13,21 +13,21 @@ class StationDetails extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _StationDetailsextends();
   }
-
 }
+
 class _StationDetailsextends extends State<StationDetails> {
   GoogleMapController mapController;
+  final Set<Marker> _markers = Set();
 
   @override
   void initState() {
     super.initState();
   }
 
-
-
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
+
   @override
   Widget build(BuildContext context) {
     final routeArgs =
@@ -38,8 +38,12 @@ class _StationDetailsextends extends State<StationDetails> {
     final String gegrLon = routeArgs['gegrLon'];
     final City city = routeArgs['city'];
     final String addressStreet = routeArgs['addressStreet'];
-
-    final LatLng _center = LatLng( double.parse(gegrLat), double.parse(gegrLon));
+    _markers.add(Marker(
+      markerId: MarkerId('newyork'),
+      position: LatLng(double.parse(gegrLat), double.parse(gegrLon)),
+    ))
+    ;
+    final LatLng _center = LatLng(double.parse(gegrLat), double.parse(gegrLon));
     var details = StationDetailsListScreen(stationId: id);
     details.createState();
 
@@ -56,29 +60,25 @@ class _StationDetailsextends extends State<StationDetails> {
               ),
               subtitle: Text(addressStreet + ' ' + city.name),
             ),
+              margin: EdgeInsets.only(left: 10, right: 10,top: 15)
           ),
-          Row(
-            children: <Widget>[
-              Card(child:  GoogleMap(
-                onMapCreated: _onMapCreated,
-                initialCameraPosition: CameraPosition(
-                  target: _center,
-                  zoom: 11.0,
-                ),
-              ),), //tu dodać mapę z google maps
+
               Container(
-                color: Colors.blue[50],
-                height: 80,
-                width: 120,
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.location_on),
-                    Text("  " + gegrLat + "\n" + "  " + gegrLon)
-                  ],
+                child: GoogleMap(
+                  markers:_markers ,
+                  onMapCreated: _onMapCreated,
+                  initialCameraPosition: CameraPosition(
+                    target: _center,
+                    zoom: 11.0,
+                  ),
+                  mapType: MapType.normal,
                 ),
-              )
-            ],
-          ),
+                height:200,
+                  margin: EdgeInsets.all(10)
+
+              ), //tu dodać mapę z google maps
+
+
           Container(
               child: Text(
                   AppLocalizations.of(context).translate('MeasuringStations'),
@@ -90,6 +90,4 @@ class _StationDetailsextends extends State<StationDetails> {
           ),
         ]));
   }
-
-
 }
