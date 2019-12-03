@@ -21,6 +21,7 @@ class User {
   String lastName;
   String email;
 
+
   User({
     this.userId,
     this.firstName,
@@ -33,6 +34,7 @@ class User {
     firstName: json["firstName"],
     lastName: json["lastName"],
     email: json["email"],
+
   );
 
   Map<String, dynamic> toJson() => {

@@ -199,6 +199,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         BuildContext context}) async {
     if (_formKey.currentState.validate()) {
       try {
+
         SystemChannels.textInput.invokeMethod('TextInput.hide');
         await _changeLoadingVisible();
         //need await so it has chance to go through error if found.
