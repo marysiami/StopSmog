@@ -15,7 +15,7 @@ class PostPage extends StatelessWidget{
     final imageUrl  = routeArgs['image'];
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(backgroundColor: Colors.transparent,),
       body: ListView(children: <Widget>[
         Padding(child: ListTile(
             title: Text(title, style: TextStyle(letterSpacing: 3, fontSize: 20, fontWeight: FontWeight.bold),textAlign: TextAlign.center,)

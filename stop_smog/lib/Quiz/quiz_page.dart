@@ -42,7 +42,7 @@ class QuizPageState extends State<QuizPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Quiz'),
+          title: Text('Quiz'),backgroundColor: Colors.transparent,
         ),
         body: _questionIndex < _questions.length
             ? Quiz(
@@ -62,28 +62,28 @@ GetQuestionList  () {
      {
        'questionText': 'Kto jest super rowerzystką?',
        'answers': [
-         {'text': 'Marysia', 'score': 10},
-         {'text': 'Maria', 'score': 5},
-         {'text': 'Isia', 'score': 3},
-         {'text': 'Marcepanek', 'score': 1},
+         {'text': 'Ko"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjra', 'score': 10},
+         {'text': 'Ko"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjraKo"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjra', 'score': 5},
+         {'text': 'IsiaIsiaIsiaIsiaIsiaIsiaIsia', 'score': 3},
+         {'text': 'MarIsiaIsiaIsiaIsiaIsiaIsiaIsiaIsiaIsiacepanek', 'score': 1},
        ],
      },
      {
        'questionText': 'Najlepszy piesek na tej planecie to?',
        'answers': [
-         {'text': 'Verdi', 'score': 3},
-         {'text': 'Myszka', 'score': 11},
-         {'text': 'Kizia', 'score': 5},
-         {'text': 'Kora', 'score': 9},
+         {'text': 'Ko"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjra', 'score': 3},
+         {'text': 'Ko"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjra', 'score': 11},
+         {'text': 'Ko"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjra', 'score': 5},
+         {'text': 'Ko"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjra', 'score': 9},
        ],
      },
      {
        'questionText': 'Czy napiszę inżynierkę w terminie?',
        'answers': [
-         {'text': 'tak', 'score': 1},
-         {'text': 'si', 'score': 1},
-         {'text': 'da', 'score': 1},
-         {'text': 'qui', 'score': 1},
+         {'text': 'Ko"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjra', 'score': 1},
+         {'text': 'Ko"jjjjjjjjjjjjjKo"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjrajjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjra', 'score': 1},
+         {'text': 'Ko"jjjjjjjjjjjjjjKo"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjrajjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjra', 'score': 1},
+         {'text': 'Ko"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjra', 'score': 1},
        ],
      },
    ];
@@ -91,7 +91,14 @@ GetQuestionList  () {
  }
  
   HandleValue(QuerySnapshot value) {
-    var docs = value.documents.first.data["Question"];
-    log('docs: $docs');
-    return value.documents;
+   // var docs = value.documents.first.data["Question"];
+    List<DocumentSnapshot> templist;
+
+    templist = value.documents;
+
+    list = templist.map((DocumentSnapshot docSnapshot){
+      return docSnapshot.data;
+    }).toList();
+
+    return list;
 }

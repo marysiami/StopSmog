@@ -38,6 +38,7 @@ dependencies:
   shared_preferences: ^0.5.4+6
   flushbar: ^1.9.1
   google_maps_flutter: ^0.5.21+12
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -48,10 +49,17 @@ dev_dependencies:
   url_launcher: ^5.1.4
   build_runner: ^1.0.0
   json_serializable: ^2.0.0
+  flutter_launcher_icons: "^0.7.0"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: "assets/logo.png"
+  image_path_android: "assets/logo.png"
+  adaptive_icon_background: "assets/background.png"
+  adaptive_icon_foreground: "assets/foreground.png"
 # The following section is specific to Flutter.
 flutter:
 
@@ -67,7 +75,13 @@ flutter:
     - assets/info1.png
     - assets/info2.png
     - assets/info3.png
-
+    - assets/logo.png
+    - assets/back0.png
+    - assets/back1.png
+    - assets/back2.png
+    - assets/back3.png
+    - assets/back4.png
+    - assets/back5.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

@@ -32,15 +32,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
       tag: 'hero',
       child: CircleAvatar(
           backgroundColor: Colors.transparent,
-          radius: 60.0,
-          child: ClipOval(
+          radius: 100.0,
+          child: ClipPath(
             child: Image.asset(
-              'assets/images/default.png',
+              'assets/logo.png',
               fit: BoxFit.cover,
-              width: 120.0,
-              height: 120.0,
+              width: 280.0,
+              height: 250.0,
             ),
           )),
+
     );
 
     final firstName = TextFormField(
@@ -120,7 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
 
     final signUpButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
+      padding: EdgeInsets.symmetric(vertical: 2.0),
       child: RaisedButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
@@ -164,15 +165,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       logo,
-                      SizedBox(height: 48.0),
+                      SizedBox(height: 15.0),
                       firstName,
-                      SizedBox(height: 24.0),
+                      SizedBox(height: 15.0),
                       lastName,
-                      SizedBox(height: 24.0),
+                      SizedBox(height: 15.0),
                       email,
-                      SizedBox(height: 24.0),
+                      SizedBox(height: 15.0),
                       password,
-                      SizedBox(height: 12.0),
+                      SizedBox(height: 10.0),
                       signUpButton,
                       signInLabel
                     ],

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/services.dart';
@@ -29,15 +30,16 @@ class _SignInScreenState extends State<SignInScreen> {
       tag: 'hero',
       child: CircleAvatar(
           backgroundColor: Colors.transparent,
-          radius: 60.0,
-          child: ClipOval(
+          radius: 100.0,
+          child: ClipPath(
             child: Image.asset(
-              'assets/images/default.png',
-              fit: BoxFit.cover,
-              width: 120.0,
-              height: 120.0,
+              'assets/logo.png',
+           fit: BoxFit.cover,
+              width: 280.0,
+              height: 250.0,
             ),
           )),
+
     );
 
     final email = TextFormField(
@@ -121,7 +123,7 @@ class _SignInScreenState extends State<SignInScreen> {
             key: _formKey,
             autovalidate: _autoValidate,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: const EdgeInsets.only(top:35.0, left: 20, right: 20),
               child: Center(
                 child: SingleChildScrollView(
                   child: Column(
@@ -129,9 +131,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       logo,
-                      SizedBox(height: 48.0),
+                      SizedBox(height: 15.0),
                       email,
-                      SizedBox(height: 24.0),
+                      SizedBox(height: 15.0),
                       password,
                       SizedBox(height: 12.0),
                       loginButton,

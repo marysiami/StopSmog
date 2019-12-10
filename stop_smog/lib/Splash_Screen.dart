@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:stop_smog/home_page.dart';
 
 class SplashScreen extends StatefulWidget {
 

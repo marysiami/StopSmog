@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:stop_smog/Quiz/Api.dart';
-var api = Api("points");
+var api = Api("Quiz");
+var resultapi = Api("points");
 List<Map<dynamic, dynamic>> list = new List();
 class Result extends StatelessWidget {
   final int resultScore;
@@ -11,6 +12,7 @@ class Result extends StatelessWidget {
   final Function resetHandler;
   Result(this.resultScore, this.resetHandler, this.questionIndex);
   String text = "";
+  String userId = "";
 
   static Future<FirebaseUser> getCurrentFirebaseUser() async {
     FirebaseUser currentUser = await FirebaseAuth.instance.currentUser();
@@ -20,14 +22,26 @@ class Result extends StatelessWidget {
   void addUserPointsDB(int points) async {
 
     FirebaseUser currentUser = await getCurrentFirebaseUser();
+    DocumentReference documentReference = Firestore.instance.collection("points").document(currentUser.uid);
+    DocumentSnapshot ds = await documentReference.get();
+     bool isLiked = ds.exists;
+    if(isLiked){
+      Firestore.instance.document("points/${currentUser.uid}").updateData({"points": points.toString(),"id":currentUser.uid});
+    }
+
+    else{
     Firestore.instance
         .document("points/${currentUser.uid}")
         .setData({"points": points.toString(),"id":currentUser.uid});
+    }
+
+
+    userId = currentUser.uid;
   }
 
   @override
   Widget build(BuildContext context) {
-    var result = api.getDataCollection().then((value) => HandleValue(value));
+    var result = resultapi.getDataCollection().then((value) => HandleValue(value));
     addUserPointsDB(resultScore);
 
     return ListView(children: <Widget>[Padding(
@@ -66,13 +80,14 @@ class Result extends StatelessWidget {
                 if (!snapshot.hasData) {
                   return new Text("Loading");
                 }
-                for(var item in list){
-                 text +=item['id']+ " " + item["points"] + "\n";
-                }
-                return new Text(text);
+                int i = 1;
+                var currentItem = list.firstWhere((x)=>x["id"] == userId);
+                var index = list.indexWhere((x)=>x["points"] == currentItem["points"]);
+                text = "Obecnie zajmujesz "+ index.toString() +  " miejsce na " + list.length.toString();
+                return new Text(currentItem["points"]);
               }
           )
-        ],
+        ],  
       ),
       padding:  EdgeInsets.only( top: 30, bottom: 30),
     )
@@ -88,6 +103,7 @@ HandleValue(QuerySnapshot value) {
   list = templist.map((DocumentSnapshot docSnapshot){
     return docSnapshot.data;
   }).toList();
-
+  list.sort((a,b)=>int.parse(a["points"]).compareTo(int.parse(b["points"])));
   return list;
 }
+

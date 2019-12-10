@@ -10,7 +10,7 @@ class YoutubePlayerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-        title: Text("Filmy o smogu"),
+        title: Text("Filmy o smogu"),backgroundColor: Colors.transparent,
       ),
         body: ListView(
           children: getFilmsListview(context),

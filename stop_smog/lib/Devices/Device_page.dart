@@ -19,7 +19,7 @@ class DevicePage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(name),
+          title: Text(name),backgroundColor: Colors.transparent,
         ),
         body: ListView(children: [
           CachedNetworkImage(

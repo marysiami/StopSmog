@@ -12,7 +12,7 @@ class BlogMenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Blog"),
+          title: const Text("Blog"), backgroundColor: Colors.transparent,
         ),
         body: ListView(children: GetPostsList(context)));
   }
@@ -53,9 +53,9 @@ List<Widget> GetPostsList(BuildContext context) {
       height: 124.0,
       margin: new EdgeInsets.only(left: 46.0),
       decoration: new BoxDecoration(
-        color: new Color(0xFF355566),
+        color: Colors.grey,
         shape: BoxShape.rectangle,
-        borderRadius: new BorderRadius.circular(8.0),
+        borderRadius: new BorderRadius.circular(2.0),
         boxShadow: <BoxShadow>[
           new BoxShadow(
             color: Colors.black12,
