@@ -62,13 +62,15 @@ class _StationDetailsextends extends State<StationDetails> {
       }
       if(isInBase == false){
         List<int>  stationsList = currentItem["stations"].cast<int>();
-        stationsList.add(int.parse(stationId));
+        var tempOutput = new List<int>.from(stationsList);
+        tempOutput.add(int.parse(stationId));
 
         List<String> stationListNames =currentItem["stationsNames"].cast<String>();
-        stationListNames.add(name);
+        var tempOutput2 = new List<String>.from(stationListNames);
+        tempOutput2.add(name);
 
-        tempList = stationsList.toString();
-        tempListNames = stationListNames.toString();
+        tempList = tempOutput.toString();
+        tempListNames = tempOutput2.toString();
 
         await Firestore.instance
             .document("stations/${currentUser.uid}")

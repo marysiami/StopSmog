@@ -70,25 +70,30 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextStyle(color: Colors.white)),
         ),
       );
-
+      var details;
       final email = appState?.firebaseUserAuth?.email ?? '';
       final firstName = appState?.user?.firstName ?? '';
       final lastName = appState?.user?.lastName ?? '';
       String names = "";
       String finalNames = "";
-      for(var st in appState?.stationNames){
-        names += st.toString() + "\n";
-      }
-      if(names != null){
+      if(appState?.stationNames != null || appState?.stationNames?.length != 0 ){
+        for(var st in appState?.stationNames){
+          names += st.toString() + "\n";
+        }
+        if(names != null){
 
-        finalNames  = "\nMasz wybrane następujące stacje: \n" + names;
+          finalNames  = "\nMasz wybrane następujące stacje: \n" + names;
+
+          final stationIds = appState?.stationsId;
+          details = HomeDetailsListScreen(stationId: stationIds.first, stationName: appState?.stationNames.first,);
+          details.createState();
+        }
       }
       else {
         finalNames = "Nie masz wybranych stacji, przejdź do listy stacji i wybierz!";
-    }
-      final stationIds = appState?.stationsId;
-      var details = HomeDetailsListScreen(stationId: stationIds.first, stationName: appState?.stationNames.first,);
-      details.createState();
+        details = Text(" ");
+      }
+
 
 
 
@@ -262,6 +267,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       margin: new EdgeInsets.only(left: 10,right: 10,top:60)
                     ),
+
                     Container(
                       child: details,
                     ),

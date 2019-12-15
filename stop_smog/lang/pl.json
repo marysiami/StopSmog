@@ -29,5 +29,7 @@
   "LastName": "Nazwisko",
   "SignUp": "Zarejestruj się",
   "HaveAccount?": "Masz u nas konto?",
-  "Search": "Wpisz nazwę stacji.."
+  "Search": "Wpisz nazwę stacji..",
+  "yearWarring": "Roczny poziom dopuszczalny to:",
+  "hourWarring": "godzinny poziom dopuszczalny to:"
 }

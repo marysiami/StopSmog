@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:fcharts/fcharts.dart';
 import 'package:flutter/material.dart';
 import 'package:stop_smog/Post/API.dart';
+import 'package:stop_smog/Post/Models/HistoryChartParam.dart';
 import 'package:stop_smog/Post/Models/ParamDetails.dart';
 import 'package:stop_smog/Post/Models/StationDetails.dart';
+import 'package:stop_smog/Post/Models/Values.dart';
 
 class HomeDetailsListScreen extends StatefulWidget {
   static const routeName = '/home_repository';
@@ -49,31 +51,6 @@ class _HomeDetailsListScreenState extends State<HomeDetailsListScreen> {
   dispose() {
     super.dispose();
   }
-
-  static const myData = [
-    ["A", "✔"],
-    ["B", "❓"],
-    ["C", "✖"],
-    ["D", "❓"],
-    ["E", "✖"],
-    ["F", "✖"],
-    ["G", "✔"],
-  ];
-
-  Container lineChart = new Container(
-    child: new LineChart(
-      lines: [
-        new Line<List<String>, String, String>(
-          data: myData,
-          xFn: (datum) => datum[0],
-          yFn: (datum) => datum[1],
-        ),
-      ],
-      chartPadding: new EdgeInsets.fromLTRB(30.0, 10.0, 10.0, 30.0),
-    ),
-    height: 250,
-  );
-
   @override
   build(context) {
     return ListView.builder(
@@ -85,54 +62,71 @@ class _HomeDetailsListScreenState extends State<HomeDetailsListScreen> {
         return new Container(
           child: getBoxWithData(
               stations[index].param.idParam,
-              Colors.redAccent,
-              Colors.black,
-              Colors.red,
               widget.stationName,
               stations[index].param.paramName.toUpperCase(),
               stations[index].param.paramFormula,
-              context,
-              lineChart),
+              context),
         );
       },
     );
   }
 }
 
-//new Container(
-//child: getBoxWithData(
-//Colors.teal,
-//Colors.grey,
-//Colors.teal,
-//"Nazwa stacji testowa",
-//"Nazwa miasta test",
-//"PM 2,5",
-//"100,222",
-//context,
-//lineChart)),
+getBoxWithData(int id, String statnioName, String city, String paramName,
+    BuildContext context) {
 
-getBoxWithData(
-    int id,
-    Color color1,
-    Color color2,
-    Color back,
-    String statnioName,
-    String city,
-    String paramName,
-    BuildContext context,
-    Container lineChart) {
+  var lineChart;
   ParamDetails param = new ParamDetails();
   API.getParamDetails(id).then((response) {
     param = ParamDetails.fromJson(json.decode(response.body));
   });
   var text1 = "brak danych", text2 = " ";
+//  Color color1 = Colors.redAccent;
+//  Color color2 = Colors.black;
+//  Color back = Colors.red;
+
+  Color color1 = Colors.blueGrey;
+  Color color2 = Colors.black;
+  Color back = Colors.grey;
+
 
   if (param.values != null) {
     if (param.values.length != 0) {
       text1 = param.values.first.value.toString();
       text2 = param.values.first.date.toString();
+      color1 = Colors.lightGreen;
+      color2 = Colors.teal;
+      back = Colors.green;
     }
   }
+
+  if (param.values  != null) {
+    List<Values> refactoredList = new List<Values>();
+    for (var p in param.values) {
+      if (p.value != null && p.date != null) refactoredList.add(p);
+    }
+    var data = refactoredList
+        .map((value) =>
+    new HistoryParam(value.date, value.value.toInt(), Colors.black))
+        .toList();
+    Container lineChart = new Container(
+      child: new LineChart(
+        lines: [
+          new Line<HistoryParam, String, String>(
+            data: data,
+            xFn: (datum) => datum.date,
+            yFn: (datum) => datum.value.toString(),
+          ),
+        ],
+        chartPadding: new EdgeInsets.fromLTRB(30.0, 10.0, 10.0, 30.0),
+      ),
+      height: 250,
+    );
+  }
+  else{
+    lineChart = Text("Brak historii parametru", style: TextStyle(fontSize: 30, color: Colors.red),);
+  }
+
 
   return new Container(
       height: 200.0,
@@ -180,30 +174,12 @@ getBoxWithData(
                       showDialog(
                           context: context,
                           builder: (BuildContext context) {
-//                                      return AlertDialog(
-//                                          title: new Text("Alert Dialog title"),
-//                                        content: SingleChildScrollView(
-//                                      child: ListBody(
-//                                      children: <Widget>[
-//                                          lineChart,
-//                                          new FlatButton(
-//                                            child: new Text("Close"),
-//                                            onPressed: () {
-//                                              Navigator.of(context).pop();
-//                                            },
-//                                          )
-//                                        ],),),
-//                                        contentPadding: EdgeInsets.all(8.0),
-//
-//                                      );
                             return AlertDialog(
-                              title: Text('Rewind and remember'),
+                              title: Text('Historia ' + paramName),
                               content: SingleChildScrollView(
                                 child: ListBody(
                                   children: <Widget>[
-                                    Text('You will never be satisfied.'),
-                                    Text(
-                                        'You\’re like me. I’m never satisfied.'),
+                                    Text(statnioName),
                                     lineChart,
                                   ],
                                 ),
@@ -257,9 +233,10 @@ getBoxWithData(
                     child: Text(
                       text2,
                       style: new TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.white70,
-                          fontWeight: FontWeight.bold,),
+                        fontSize: 15.0,
+                        color: Colors.white70,
+                        fontWeight: FontWeight.bold,
+                      ),
                       textAlign: TextAlign.right,
                     )),
               ],

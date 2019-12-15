@@ -29,5 +29,7 @@
   "LastName": "LastName",
   "SignUp": "Sign Up",
   "HaveAccount?": "Have Account?",
-  "Search": "Search Station Name.."
+  "Search": "Search Station Name..",
+  "yearWarring": "The annual limit level is:",
+  "hourWarring": "hour(s) acceptable level is:"
 }

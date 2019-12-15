@@ -37,19 +37,65 @@ class _ParamHistoryScreenState extends State<ParamHistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String warring = " ";
+    if (param.key != null) {
+      switch (param.key) {
+        case "C6H6":
+          warring =
+              AppLocalizations.of(context).translate('yearWarring') + " 5 µg/m3";
+          break;
+        case "NO2":
+          warring = AppLocalizations.of(context).translate('yearWarring') +
+              " 40 µg/m3 \n1" +
+              AppLocalizations.of(context).translate('hourWarring') +
+              " 200 µg/m3";
+          break;
+        case "SO2":
+          warring = "1 " +
+              AppLocalizations.of(context).translate('hourWarring') +
+              " 350 µg/m3 \n24" +
+              AppLocalizations.of(context).translate('hourWarring') +
+              " 125 µg/m3";
+          break;
+        case "CO":
+          warring = "8 " +
+              AppLocalizations.of(context).translate('hourWarring') +
+              " 10 000 µg/m3";
+          break;
+        case "PM10":
+          warring = AppLocalizations.of(context).translate('yearWarring') +
+              " 40 µg/m3 \n24" +
+              AppLocalizations.of(context).translate('hourWarring') +
+              " 50 µg/m3";
+          break;
+        case "PM2.5":
+          warring =
+              AppLocalizations.of(context).translate('yearWarring') + " 20 µg/m3";
+          break;
+        case "Pb":
+          warring =
+              AppLocalizations.of(context).translate('yearWarring') + " 0,5 µg/m3";
+          break;
+      }
+    }
+
     return Scaffold(
         appBar: AppBar(
-          title: Text(param.key == null? " ": param.key),
+          title: Text(param.key == null ? " " : param.key),
         ),
         body: ListView(children: <Widget>[
           Card(
             child: ListTile(
               title: Text(
-                param.key== null? " ": param.key,
+                param.key == null ? " " : param.key,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              subtitle: Text(
-                  AppLocalizations.of(context).translate('ParametrHistory')== null?" " : AppLocalizations.of(context).translate('ParametrHistory')),
+              subtitle: Text(AppLocalizations.of(context)
+                          .translate('ParametrHistory') ==
+                      null
+                  ? " "
+                  : AppLocalizations.of(context).translate('ParametrHistory') + "\n \n" +
+                      warring),
             ),
           ),
           Drawdiagramhistory(param.values)
