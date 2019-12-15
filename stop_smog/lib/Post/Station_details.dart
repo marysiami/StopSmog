@@ -45,7 +45,6 @@ class _StationDetailsextends extends State<StationDetails> {
   void addUserStationDB(String stationId, String name) async {
     List<int> listStation = new List<int>();
     List<String> listStationNames = new List<String>();
-
     FirebaseUser currentUser = await getCurrentFirebaseUser();
     DocumentReference documentReference =
         Firestore.instance.collection("stations").document(currentUser.uid);
@@ -57,20 +56,25 @@ class _StationDetailsextends extends State<StationDetails> {
       var tempList = currentItem["stations"];
       var tempListNames = currentItem["stationsNames"];
 
-      List<int> stringList =
-          (jsonDecode(tempList) as List<dynamic>).cast<int>();
-      stringList.add(int.parse(stationId));
+      bool isInBase = false;
+      for ( var ob in tempList){
+       if(ob == int.parse(stationId) ) isInBase= true;
+      }
+      if(isInBase == false){
+        List<int>  stationsList = currentItem["stations"].cast<int>();
+        stationsList.add(int.parse(stationId));
 
-      List<String> stringListNames =
-          (jsonDecode(tempListNames) as List<dynamic>).cast<String>();
-      stringListNames.add(name);
+        List<String> stationListNames =currentItem["stationsNames"].cast<String>();
+        stationListNames.add(name);
 
-      tempList = stringList.toString();
-      tempListNames = stringListNames.toString();
+        tempList = stationsList.toString();
+        tempListNames = stationListNames.toString();
 
-      await Firestore.instance
-          .document("stations/${currentUser.uid}")
-          .updateData({"stations": tempList, "stationsNames": tempListNames});
+        await Firestore.instance
+            .document("stations/${currentUser.uid}")
+            .updateData({"stations": tempList, "stationsNames": tempListNames});
+      }
+
     } else {
       listStation.add(int.parse(stationId));
       listStationNames.add(name);

@@ -16,6 +16,7 @@ import 'Post/StationList_Filter.dart';
 import 'Post/Station_List.dart';
 import 'Post/Station_details.dart';
 import 'Quiz/Quiz_page.dart';
+import 'Quiz2/Quiz2Main.dart';
 import 'Video/Youtube_player.dart';
 import 'app_localizations.dart';
 
@@ -65,6 +66,7 @@ class MyApp extends StatelessWidget {
           InfographicPage2.routeName: (ctx) => InfographicPage2(),
           InfographicPage3.routeName: (ctx) => InfographicPage3(),
           StationFilter.routeName: (ctx) => StationFilter(),
+          Quiz2Main.routeName: (ctx)=> Quiz2Main()
           //Quiz2
         });
   }

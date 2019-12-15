@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,6 +7,10 @@ import 'package:stop_smog/Auth/Models/settings.dart';
 import 'package:stop_smog/Auth/Models/state.dart';
 import 'package:stop_smog/Auth/Models/user.dart';
 import 'package:stop_smog/Auth/Util/auth.dart';
+import 'package:stop_smog/Quiz/Api.dart';
+
+var api = Api("stations");
+List<Map<dynamic, dynamic>> list = new List();
 
 class StateWidget extends StatefulWidget {
   final StateModel state;
@@ -33,6 +38,10 @@ class _StateWidgetState extends State<StateWidget> {
   //GoogleSignInAccount googleAccount;
   //final GoogleSignIn googleSignIn = new GoogleSignIn();
 
+  List<int> stationsList = new List();
+  List<String> stationListNames = new List();
+
+
   @override
   void initState() {
     super.initState();
@@ -43,9 +52,36 @@ class _StateWidgetState extends State<StateWidget> {
       initUser();
     }
   }
+  HandleValue(QuerySnapshot value) {
+    List<DocumentSnapshot> templist;
 
+    templist = value.documents;
+
+    list = templist.map((DocumentSnapshot docSnapshot) {
+      return docSnapshot.data;
+    }).toList();
+    return list;
+  }
+  void getStations() async {
+    FirebaseUser currentUser = await Auth.getCurrentFirebaseUser();
+    if(currentUser != null){
+      DocumentReference documentReference =
+      Firestore.instance.collection("stations").document(currentUser.uid);
+      DocumentSnapshot ds = await documentReference.get();
+      bool isLiked = ds.exists;
+      if (isLiked) {
+        var currentItem = list.firstWhere((x) => x["id"] == currentUser.uid);
+        stationsList = (currentItem["stations"]).cast<int>();
+        stationListNames =currentItem["stationsNames"].cast<String>();
+
+      }
+    }
+
+  }
   Future<Null> initUser() async {
-    //print('...initUser...');
+    var result = api.getDataCollection().then((value) => HandleValue(value));
+    await getStations();
+
     FirebaseUser firebaseUserAuth = await Auth.getCurrentFirebaseUser();
     User user = await Auth.getUserLocal();
     Settings settings = await Auth.getSettingsLocal();
@@ -54,6 +90,8 @@ class _StateWidgetState extends State<StateWidget> {
       state.firebaseUserAuth = firebaseUserAuth;
       state.user = user;
       state.settings = settings;
+      state.stationNames = stationListNames;
+      state.stationsId = stationsList;
     });
   }
 
