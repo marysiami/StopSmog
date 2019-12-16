@@ -8,6 +8,8 @@ import 'package:stop_smog/Post/Models/ParamDetails.dart';
 import 'package:stop_smog/Post/Models/StationDetails.dart';
 import 'package:stop_smog/Post/Models/Values.dart';
 
+Map<int,ParamDetails>paramList = new Map();
+
 class HomeDetailsListScreen extends StatefulWidget {
   static const routeName = '/home_repository';
   int stationId;
@@ -34,6 +36,15 @@ class _HomeDetailsListScreenState extends State<HomeDetailsListScreen> {
       setState(() {
         Iterable list = json.decode(response.body);
         stations = list.map((model) => StationDetails.fromJson(model)).toList();
+        for(var station in stations){
+          var param;
+          API.getParamDetails(station.id).then((response) {
+            setState(() {
+              param = ParamDetails.fromJson(json.decode(response.body));
+              paramList[station.id] = param;
+            });
+          });
+        }
       });
     });
   }
@@ -46,6 +57,7 @@ class _HomeDetailsListScreenState extends State<HomeDetailsListScreen> {
   initState() {
     super.initState();
     _getStations();
+
   }
 
   dispose() {
@@ -53,18 +65,21 @@ class _HomeDetailsListScreenState extends State<HomeDetailsListScreen> {
   }
   @override
   build(context) {
+    var param;
     return ListView.builder(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemCount: stations.length,
       physics: const ScrollPhysics(),
       itemBuilder: (context, index) {
+        param = paramList[stations[index].id];
         return new Container(
           child: getBoxWithData(
-              stations[index].param.idParam,
+              stations[index].id,
               widget.stationName,
               stations[index].param.paramName.toUpperCase(),
               stations[index].param.paramFormula,
+              param,
               context),
         );
       },
@@ -72,14 +87,11 @@ class _HomeDetailsListScreenState extends State<HomeDetailsListScreen> {
   }
 }
 
-getBoxWithData(int id, String statnioName, String city, String paramName,
+getBoxWithData(int id, String statnioName, String city, String paramName, ParamDetails param,
     BuildContext context) {
 
   var lineChart;
-  ParamDetails param = new ParamDetails();
-  API.getParamDetails(id).then((response) {
-    param = ParamDetails.fromJson(json.decode(response.body));
-  });
+
   var text1 = "brak danych", text2 = " ";
 //  Color color1 = Colors.redAccent;
 //  Color color2 = Colors.black;
@@ -89,7 +101,7 @@ getBoxWithData(int id, String statnioName, String city, String paramName,
   Color color2 = Colors.black;
   Color back = Colors.grey;
 
-
+if(param != null){
   if (param.values != null) {
     if (param.values.length != 0) {
       text1 = param.values.first.value.toString();
@@ -109,27 +121,29 @@ getBoxWithData(int id, String statnioName, String city, String paramName,
         .map((value) =>
     new HistoryParam(value.date, value.value.toInt(), Colors.black))
         .toList();
-    Container lineChart = new Container(
+    lineChart = new Container(
       child: new LineChart(
         lines: [
           new Line<HistoryParam, String, String>(
             data: data,
             xFn: (datum) => datum.date,
-            yFn: (datum) => datum.value.toString(),
+          yFn: (datum) => datum.value.toString(),
           ),
+
         ],
-        chartPadding: new EdgeInsets.fromLTRB(30.0, 10.0, 10.0, 30.0),
+        chartPadding: new EdgeInsets.fromLTRB(30.0, 5.0, 5.0, 30.0),
       ),
-      height: 250,
+      height: 300,
     );
   }
-  else{
-    lineChart = Text("Brak historii parametru", style: TextStyle(fontSize: 30, color: Colors.red),);
-  }
+}
+else{
+  lineChart = Text("Brak historii parametru", style: TextStyle(fontSize: 30, color: Colors.red),);
+}
 
 
   return new Container(
-      height: 200.0,
+      height: 180.0,
       margin: new EdgeInsets.all(20.0),
       decoration: new BoxDecoration(
         boxShadow: [
@@ -222,7 +236,7 @@ getBoxWithData(int id, String statnioName, String city, String paramName,
                   child: Text(
                     text1,
                     style: new TextStyle(
-                        fontSize: 15.0,
+                        fontSize: 30.0,
                         color: Colors.white70,
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.right,

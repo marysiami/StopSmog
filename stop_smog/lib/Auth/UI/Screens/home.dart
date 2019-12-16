@@ -1,9 +1,4 @@
-import 'dart:convert';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fcharts/fcharts.dart';
 import 'package:stop_smog/Auth/Models/state.dart';
 import 'package:stop_smog/Auth/UI/Screens/home_details.dart';
 import 'package:stop_smog/Auth/UI/Screens/sign_in.dart';
@@ -14,7 +9,6 @@ import 'package:stop_smog/Devices/Device_menu.dart';
 import 'package:stop_smog/Infographic/Infographic_Page.dart';
 import 'package:stop_smog/Post/New_point_steps.dart';
 import 'package:stop_smog/Post/StationList_Filter.dart';
-import 'package:stop_smog/Quiz/Api.dart';
 import 'package:stop_smog/Quiz/quiz_page.dart';
 import 'package:stop_smog/Quiz2/Quiz2Main.dart';
 import 'package:stop_smog/Video/Youtube_player.dart';
@@ -41,17 +35,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget build(BuildContext context) {
     appState = StateWidget.of(context).state;
-    if (!appState.isLoading &&
-        (appState.firebaseUserAuth == null ||
-            appState.user == null ||
-            appState.settings == null)) {
-      return SignInScreen();
-    } else {
-      if (appState.isLoading) {
-        _loadingVisible = true;
+      if (!appState.isLoading &&
+          (appState.firebaseUserAuth == null ||
+              appState.user == null ||
+              appState.settings == null)) {
+        return SignInScreen();
       } else {
-        _loadingVisible = false;
-      }
+        if (appState.isLoading) {
+          _loadingVisible = true;
+        } else {
+          _loadingVisible = false;
+        }
+
+
 
 
       final signOutButton = Padding(
@@ -76,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
       final lastName = appState?.user?.lastName ?? '';
       String names = "";
       String finalNames = "";
-      if(appState?.stationNames != null || appState?.stationNames?.length != 0 ){
+      if(appState?.stationNames != null && appState?.stationNames.length > 0 ){
         for(var st in appState?.stationNames){
           names += st.toString() + "\n";
         }
@@ -85,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
           finalNames  = "\nMasz wybrane następujące stacje: \n" + names;
 
           final stationIds = appState?.stationsId;
-          details = HomeDetailsListScreen(stationId: stationIds.first, stationName: appState?.stationNames.first,);
+          details = HomeDetailsListScreen(stationId: stationIds.first, stationName: appState?.stationNames.first);
           details.createState();
         }
       }

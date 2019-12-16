@@ -220,7 +220,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         print("Sign Up Error: $e");
         String exception = Auth.getExceptionText(e,context);
         Flushbar(
-          title: AppLocalizations.of(context).translate('ForgotPAssword'),
+          title: AppLocalizations.of(context).translate('ToManyUsers'),
           message: exception,
           duration: Duration(seconds: 5),
         )..show(context);
