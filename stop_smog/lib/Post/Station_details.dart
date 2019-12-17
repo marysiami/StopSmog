@@ -7,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:stop_smog/Auth/Models/state.dart';
+import 'package:stop_smog/Auth/Util/state_widget.dart';
 import 'package:stop_smog/Quiz/Api.dart';
 import '../app_localizations.dart';
 import 'Models/City.dart';
@@ -27,6 +29,7 @@ class _StationDetailsextends extends State<StationDetails> {
   GoogleMapController mapController;
   final Set<Marker> _markers = Set();
   List<Map<dynamic, dynamic>> list = new List();
+  StateModel appState;
 
   @override
   void initState() {
@@ -47,7 +50,7 @@ class _StationDetailsextends extends State<StationDetails> {
     List<String> listStationNames = new List<String>();
     FirebaseUser currentUser = await getCurrentFirebaseUser();
     DocumentReference documentReference =
-        Firestore.instance.collection("stations").document(currentUser.uid);
+    Firestore.instance.collection("stations").document(currentUser.uid);
     DocumentSnapshot ds = await documentReference.get();
     bool isLiked = ds.exists;
 
@@ -57,15 +60,16 @@ class _StationDetailsextends extends State<StationDetails> {
       var tempListNames = currentItem["stationsNames"];
 
       bool isInBase = false;
-      for ( var ob in tempList){
-       if(ob == int.parse(stationId) ) isInBase= true;
+      for (var ob in tempList) {
+        if (ob == int.parse(stationId)) isInBase = true;
       }
-      if(isInBase == false){
-        List<int>  stationsList = currentItem["stations"].cast<int>();
+      if (isInBase == false) {
+        List<int> stationsList = currentItem["stations"].cast<int>();
         var tempOutput = new List<int>.from(stationsList);
         tempOutput.add(int.parse(stationId));
 
-        List<String> stationListNames =currentItem["stationsNames"].cast<String>();
+        List<String> stationListNames = currentItem["stationsNames"].cast<
+            String>();
         var tempOutput2 = new List<String>.from(stationListNames);
         tempOutput2.add(name);
 
@@ -75,16 +79,27 @@ class _StationDetailsextends extends State<StationDetails> {
         await Firestore.instance
             .document("stations/${currentUser.uid}")
             .updateData({"stations": tempList, "stationsNames": tempListNames});
+      } else {
+        listStation.add(int.parse(stationId));
+        listStationNames.add(name);
+        await Firestore.instance.document("stations/${currentUser.uid}")
+            .setData({
+          "stations": listStation,
+          "id": currentUser.uid,
+          "stationsNames": listStationNames
+        });
+      }
+      if (appState?.stationNames != null && appState?.stationNames.length > 0) {
+        var tempListappState = appState.stationNames;
+        tempListappState.add(name);
+        appState.stationNames = tempListappState;
       }
 
-    } else {
-      listStation.add(int.parse(stationId));
-      listStationNames.add(name);
-      await Firestore.instance.document("stations/${currentUser.uid}").setData({
-        "stations": listStation,
-        "id": currentUser.uid,
-        "stationsNames": listStationNames
-      });
+      if (appState?.stationsId != null && appState?.stationsId.length > 0) {
+        var tempListappStateId = appState.stationsId;
+        tempListappStateId.add(int.parse(stationId));
+        appState.stationsId = tempListappStateId;
+      }
     }
   }
 
@@ -101,6 +116,7 @@ class _StationDetailsextends extends State<StationDetails> {
 
   @override
   Widget build(BuildContext context) {
+    appState = StateWidget.of(context).state;
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, Object>;
     final id = routeArgs['id'];

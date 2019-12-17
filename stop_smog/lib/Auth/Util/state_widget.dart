@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,8 @@ class _StateWidgetState extends State<StateWidget> {
 
   List<int> stationsList = new List();
   List<String> stationListNames = new List();
-
+  var stationsListtemp = new List();
+ var stationListNamestemp = new List();
 
   @override
   void initState() {
@@ -71,9 +73,20 @@ class _StateWidgetState extends State<StateWidget> {
       bool isLiked = ds.exists;
       if (isLiked) {
         var currentItem = list.firstWhere((x) => x["id"] == currentUser.uid);
-        stationsList = (currentItem["stations"]).cast<int>();
-        stationListNames =currentItem["stationsNames"].cast<String>();
 
+        stationsListtemp  = currentItem["stations"].split(',').map((String text){
+          text = text.replaceAll("]", "");
+          text = text.replaceAll("[", "");
+          return int.parse(text);
+        }).toList();
+        stationListNamestemp =currentItem["stationsNames"].split(',').map((String text){
+          text = text.replaceAll("]", "");
+          text = text.replaceAll("[", "");
+          return text;
+        }).toList();
+
+        stationsList = stationsListtemp.cast<int>();
+        stationListNames = stationListNamestemp.cast<String>();
       }
     }
 

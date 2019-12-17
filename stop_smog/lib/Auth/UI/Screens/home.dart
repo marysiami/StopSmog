@@ -15,7 +15,6 @@ import 'package:stop_smog/Video/Youtube_player.dart';
 
 import '../../../app_localizations.dart';
 
-
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -35,20 +34,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget build(BuildContext context) {
     appState = StateWidget.of(context).state;
-      if (!appState.isLoading &&
-          (appState.firebaseUserAuth == null ||
-              appState.user == null ||
-              appState.settings == null)) {
-        return SignInScreen();
+    if (!appState.isLoading &&
+        (appState.firebaseUserAuth == null ||
+            appState.user == null ||
+            appState.settings == null)) {
+      return SignInScreen();
+    } else {
+      if (appState.isLoading) {
+        _loadingVisible = true;
       } else {
-        if (appState.isLoading) {
-          _loadingVisible = true;
-        } else {
-          _loadingVisible = false;
-        }
-
-
-
+        _loadingVisible = false;
+      }
 
       final signOutButton = Padding(
         padding: EdgeInsets.symmetric(vertical: 16.0),
@@ -72,26 +68,42 @@ class _HomeScreenState extends State<HomeScreen> {
       final lastName = appState?.user?.lastName ?? '';
       String names = "";
       String finalNames = "";
-      if(appState?.stationNames != null && appState?.stationNames.length > 0 ){
-        for(var st in appState?.stationNames){
-          names += st.toString() + "\n";
-        }
-        if(names != null){
-
-          finalNames  = "\nMasz wybrane następujące stacje: \n" + names;
-
-          final stationIds = appState?.stationsId;
-          details = HomeDetailsListScreen(stationId: stationIds.first, stationName: appState?.stationNames.first);
-          details.createState();
-        }
+      String shortName = "";
+      if (firstName != "" && lastName != "") {
+        shortName = firstName.substring(0, 1) + lastName.substring(0, 1);
       }
-      else {
-        finalNames = "Nie masz wybranych stacji, przejdź do listy stacji i wybierz!";
+
+      if (appState.stationNames != null) {
+        if (appState.stationNames.length > 0) {
+          for (var st in appState?.stationNames) {
+            names += st.toString() + "\n";
+          }
+          if (names != null) {
+            finalNames = "\nMasz wybrane następujące stacje: \n" + names;
+
+            final stationIds = appState?.stationsId;
+            for (var id in stationIds) {
+
+              var index = stationIds.indexOf(id);
+              details = ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: stationIds.length,
+                  physics: const ScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return HomeDetailsListScreen(
+                        stationId: id,
+                        stationName: appState?.stationNames[index]);
+                  });
+            }
+            ;
+          }
+        }
+      } else {
+        finalNames =
+            "Nie masz wybranych stacji, przejdź do listy stacji i wybierz!";
         details = Text(" ");
       }
-
-
-
 
       return Scaffold(
           backgroundColor: Colors.white,
@@ -114,9 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   accountEmail: new Text(email),
                   currentAccountPicture: new CircleAvatar(
                     backgroundColor: Colors.deepOrangeAccent,
-                    child: new Text(
-                        firstName.substring(0, 1) + lastName.substring(0, 1),
-                        style: TextStyle(fontSize: 20)),
+                    child: new Text(shortName, style: TextStyle(fontSize: 20)),
                   ),
                 ),
                 Card(
@@ -251,23 +261,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: new ListView(
                   children: <Widget>[
                     new Container(
-                      child: ListTile(
-                        title: Text(
-                          "Witaj \n$firstName!",
-                          style: TextStyle(
-                              fontSize: 42, fontWeight: FontWeight.bold),
+                        child: ListTile(
+                          title: Text(
+                            "Witaj \n$firstName!",
+                            style: TextStyle(
+                                fontSize: 42, fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: Text(
+                            finalNames,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.orange,
+                                fontSize: 18),
+                          ),
                         ),
-                        subtitle:
-
-                            Text(finalNames,style: TextStyle(fontWeight:FontWeight.bold, color: Colors.orange,fontSize: 18 ),),
-                      ),
-                      margin: new EdgeInsets.only(left: 10,right: 10,top:60)
-                    ),
+                        margin:
+                            new EdgeInsets.only(left: 10, right: 10, top: 60)),
 
                     Container(
                       child: details,
                     ),
-
 
                     // SimpleLineChart.withSampleData()
                   ],
