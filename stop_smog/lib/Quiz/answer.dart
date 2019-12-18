@@ -21,7 +21,6 @@ class Answer extends StatelessWidget {
               ],
             ),
           ),
-          padding: const EdgeInsets.all(10.0),
           child: new Text(answerText,
               style: TextStyle(fontSize: 15),
             textAlign: TextAlign.left,

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:stop_smog/Auth/UI/Screens/home.dart';
 import 'package:stop_smog/Post/Models/Station.dart';
 
 import '../app_localizations.dart';
@@ -61,6 +62,10 @@ class _StationFilterState extends State<StationFilter> {
       ),
       resizeToAvoidBottomPadding: false,
     );
+  }
+
+  void selectItem(BuildContext ctx, String routeName) {
+    Navigator.of(ctx).pushNamed(routeName);
   }
 
   Widget _buildBar(BuildContext context) {
@@ -126,7 +131,8 @@ class _StationFilterState extends State<StationFilter> {
         this._appBarTitle = new TextField(
           controller: _filter,
           decoration: new InputDecoration(
-              prefixIcon: new Icon(Icons.search), hintText: AppLocalizations.of(context).translate('Search')),
+              prefixIcon: new Icon(Icons.search),
+              hintText: AppLocalizations.of(context).translate('Search')),
         );
       } else {
         this._searchIcon = new Icon(Icons.search);

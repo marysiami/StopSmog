@@ -64,7 +64,6 @@ class Model extends ChangeNotifier {
   void load() async {
     _index = 0;
     _answers.clear();
-    // TODO(mono): くるくる出したいのでとりあえず
     await Future<void>.delayed(const Duration(milliseconds: 400));
     _quizList = await quizLoader.load();
     _quizListLoaded = true;

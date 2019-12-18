@@ -103,6 +103,47 @@ class _StationDetailsextends extends State<StationDetails> {
     }
   }
 
+  void removeUserStationDB(String stationId, String name) async {
+  List<int> listStation2 = new List<int>();
+  List<String> listStationNames2 = new List<String>();
+  FirebaseUser currentUser2 = await getCurrentFirebaseUser();
+  DocumentReference documentReference2 =
+  Firestore.instance.collection("stations").document(currentUser2.uid);
+  DocumentSnapshot ds = await documentReference2.get();
+  bool isLiked = ds.exists;
+
+  List<int> stationsList = new List();
+  List<String> stationListNames = new List();
+  var stationsListtemp = new List();
+  var stationListNamestemp = new List();
+
+  if(isLiked){
+    var currentItem = list.firstWhere((x) => x["id"] == currentUser2.uid);
+
+    stationsListtemp  = currentItem["stations"].split(',').map((String text){
+      text = text.replaceAll("]", "");
+      text = text.replaceAll("[", "");
+      return int.parse(text);
+    }).toList();
+    stationListNamestemp =currentItem["stationsNames"].split(', ').map((String text){
+      text = text.replaceAll("]", "");
+      text = text.replaceAll("[", "");
+      return text;
+    }).toList();
+
+    stationsList = stationsListtemp.cast<int>();
+    stationListNames = stationListNamestemp.cast<String>();
+
+    stationsList.remove(int.parse(stationId));
+    stationListNames.remove(name);
+
+
+    await Firestore.instance
+        .document("stations/${currentUser2.uid}")
+        .updateData({"stations": stationsList.toString(), "stationsNames": stationListNames.toString()});
+  }
+  }
+
   HandleValue(QuerySnapshot value) {
     List<DocumentSnapshot> templist;
 
@@ -155,6 +196,23 @@ class _StationDetailsextends extends State<StationDetails> {
                         .getDataCollection()
                         .then((value) => HandleValue(value));
                     addUserStationDB(id.toString(), stationName);
+                  }),
+              IconButton(
+                  icon: Icon(Icons.remove_circle),
+                  autofocus: true,
+                  tooltip: "Usuń stację ze swojej kolekcji",
+                  onPressed: () {
+                    String exception = "Usunięto stację z kolekcji";
+                    Flushbar(
+                      title: "Nowa aktywność",
+                      message: exception,
+                      duration: Duration(seconds: 10),
+                    )..show(context);
+
+                    var result = api
+                        .getDataCollection()
+                        .then((value) => HandleValue(value));
+                    removeUserStationDB(id.toString(), stationName);
                   })
             ]),
         body: ListView(children: <Widget>[

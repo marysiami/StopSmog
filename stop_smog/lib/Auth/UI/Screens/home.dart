@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:stop_smog/Auth/Models/state.dart';
 import 'package:stop_smog/Auth/UI/Screens/home_details.dart';
@@ -17,19 +18,50 @@ import '../../../app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
+
+  static const routeName = '/home';
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   StateModel appState;
   bool _loadingVisible = false;
 
+  void selectItem(BuildContext ctx, String routeName) {
+    Navigator.of(ctx).pushNamed(routeName);
+  }
+
+  getStateNet() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context)
+      {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Text("Uwaga!"),
+          content:
+          SingleChildScrollView(child: Text("Brak dostępu do internetu")),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'Zamknij',
+                style: TextStyle(color: Colors.black),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-  }
-
-  void selectItem(BuildContext ctx, String routeName) {
-    Navigator.of(ctx).pushNamed(routeName);
+    getStateNet();
   }
 
   Widget build(BuildContext context) {
@@ -79,11 +111,10 @@ class _HomeScreenState extends State<HomeScreen> {
             names += st.toString() + "\n";
           }
           if (names != null) {
-            finalNames = "\nMasz wybrane następujące stacje: \n" + names;
+            finalNames = "\nMasz wybrane następujące stacje: \n " + names;
 
             final stationIds = appState?.stationsId;
             for (var id in stationIds) {
-
               var index = stationIds.indexOf(id);
               details = ListView.builder(
                   scrollDirection: Axis.vertical,
@@ -129,17 +160,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: new Text(shortName, style: TextStyle(fontSize: 20)),
                   ),
                 ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.pin_drop,
-                      color: Colors.indigoAccent,
-                      size: 30.0,
-                    ),
-                    title: Text('Dodaj punkt'),
-                    onTap: () => selectItem(context, NewPointSteps.routeName),
-                  ),
-                ),
+//                Card(
+//                  child: ListTile(
+//                    leading: Icon(
+//                      Icons.pin_drop,
+//                      color: Colors.indigoAccent,
+//                      size: 30.0,
+//                    ),
+//                    title: Text('Moje punkty'),
+//                    onTap: () => selectItem(context, NewPointSteps.routeName),
+//                  ),
+//                ),
                 Card(
                   child: ListTile(
                       leading: Icon(
@@ -152,16 +183,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () =>
                           selectItem(context, StationFilter.routeName)),
                 ),
-                Card(
-                  child: ListTile(
-                      leading: Icon(
-                        Icons.thumbs_up_down,
-                        color: Colors.amber,
-                        size: 30.0,
-                      ),
-                      title: Text('Quiz'),
-                      onTap: () => selectItem(context, QuizPage.routeName)),
-                ),
+//                Card(
+//                  child: ListTile(
+//                      leading: Icon(
+//                        Icons.thumbs_up_down,
+//                        color: Colors.amber,
+//                        size: 30.0,
+//                      ),
+//                      title: Text('Quiz'),
+//                      onTap: () => selectItem(context, QuizPage.routeName)),
+//                ),
                 Card(
                   child: ListTile(
                       leading: Icon(
@@ -169,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.lightGreen,
                         size: 30.0,
                       ),
-                      title: Text('Quiz2'),
+                      title: Text('Quiz'),
                       onTap: () => selectItem(context, Quiz2Main.routeName)),
                 ),
                 Card(
@@ -185,32 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () =>
                           {selectItem(context, InfographicPage1.routeName)}),
                 ),
-                Card(
-                  child: ListTile(
-                      leading: Icon(
-                        Icons.info,
-                        color: Colors.red,
-                        size: 30.0,
-                      ),
-                      title:
-                          Text(AppLocalizations.of(context).translate('Info2')),
-                      subtitle: Text("Infografika"),
-                      onTap: () =>
-                          {selectItem(context, InfographicPage2.routeName)}),
-                ),
-                Card(
-                  child: ListTile(
-                      leading: Icon(
-                        Icons.info,
-                        color: Colors.red,
-                        size: 30.0,
-                      ),
-                      title:
-                          Text(AppLocalizations.of(context).translate('Info3')),
-                      subtitle: Text("Infografika"),
-                      onTap: () =>
-                          {selectItem(context, InfographicPage3.routeName)}),
-                ),
+
                 Card(
                   child: ListTile(
                       leading: Icon(

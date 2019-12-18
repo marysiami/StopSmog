@@ -50,23 +50,22 @@ class MyApp extends StatelessWidget {
         },
         routes: {
           '/': (context) => HomeScreen(),
+          HomeScreen.routeName: (context) => HomeScreen(),
           '/signin': (context) => SignInScreen(),
           '/signup': (context) => SignUpScreen(),
           '/forgot-password': (context) => ForgotPasswordScreen(),
-          BlogMenuPage.routeName: (ctx) => BlogMenuPage(),
-          PostPage.routeName: (ctx) => PostPage(),
-          DeviceMenuPage.routeName: (ctx) => DeviceMenuPage(),
-          DevicePage.routeName: (ctx) => DevicePage(),
-          QuizPage.routeName: (ctx) => QuizPage(),
-          YoutubePlayerPage.routeName: (ctx) => YoutubePlayerPage(),
-          StationListScreen.routeName: (ctx) => StationListScreen(),
-          NewPointSteps.routeName: (ctx) => NewPointSteps(),
-          StationDetails.routeName: (ctx) => StationDetails(),
-          InfographicPage1.routeName: (ctx) => InfographicPage1(),
-          InfographicPage2.routeName: (ctx) => InfographicPage2(),
-          InfographicPage3.routeName: (ctx) => InfographicPage3(),
-          StationFilter.routeName: (ctx) => StationFilter(),
-          Quiz2Main.routeName: (ctx)=> Quiz2Main()
+          BlogMenuPage.routeName: (context) => BlogMenuPage(),
+          PostPage.routeName: (context) => PostPage(),
+          DeviceMenuPage.routeName: (context) => DeviceMenuPage(),
+          DevicePage.routeName: (context) => DevicePage(),
+          QuizPage.routeName: (context) => QuizPage(),
+          YoutubePlayerPage.routeName: (context) => YoutubePlayerPage(),
+          StationListScreen.routeName: (context) => StationListScreen(),
+          NewPointSteps.routeName: (context) => NewPointSteps(),
+          StationDetails.routeName: (context) => StationDetails(),
+          InfographicPage1.routeName: (context) => InfographicPage1(),
+          StationFilter.routeName: (context) => StationFilter(),
+          Quiz2Main.routeName: (context)=> Quiz2Main()
           //Quiz2
         });
   }

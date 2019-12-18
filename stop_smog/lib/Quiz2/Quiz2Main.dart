@@ -14,8 +14,8 @@ class Quiz2Main extends StatelessWidget {
       providers: [
         Provider.value(value: QuizLoader()),
       ],
-      child: MaterialApp(
-        home: QuizPage(),
+      child: Scaffold(
+        body: QuizPage(),
       ),
     );
   }

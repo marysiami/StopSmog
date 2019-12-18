@@ -14,7 +14,8 @@ class Question extends StatelessWidget {
     }
     return Text(
       quiz.correct.description,
-      style: Theme.of(context).textTheme.headline,
+      style: TextStyle(fontSize: 25)
+      //Theme.of(context).textTheme.headline,
     );
   }
 }

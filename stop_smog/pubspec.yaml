@@ -47,6 +47,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   syncfusion_flutter_charts: ^17.3.26
+  connectivity: ^0.4.5
 
 dev_dependencies:
   flutter_test:
@@ -78,8 +79,6 @@ flutter:
     - lang/en.json
     - lang/pl.json
     - assets/info1.png
-    - assets/info2.png
-    - assets/info3.png
     - assets/logo.png
     - assets/back0.png
     - assets/back1.png
@@ -96,6 +95,16 @@ flutter:
     - assets/info/003.png
     - assets/info/004.png
     - assets/info/005.png
+    - assets/info2/
+    - assets/info2/info2.png
+    - assets/info2/info2001.png
+    - assets/info2/info2002.png
+    - assets/info2/info2003.png
+    - assets/info3/
+    - assets/info3/info3001.png
+    - assets/info3/info3002.png
+    - assets/info3/info3003.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -99,9 +99,17 @@ getBoxWithData(int id, String statnioName, String paramName,
   if (param != null) {
     if (param.values != null) {
       if (param.values.length != 0) {
-        text1 = param.values.first.value.toString();
-        text2 = param.values.first.date.toString();
-        val = param.values.first.value;
+        if(param.values.first.value !=null) {
+          text1 = param.values.first.value.toString();
+          text2 = param.values.first.date.toString();
+          val = param.values.first.value;
+        }
+        else {text1 = param.values[1].value.toString();
+        text2 = param.values[1].date.toString();
+        val =  param.values[1].value;
+        }
+
+
         bool status = true;
         switch (paramFormula) {
           case "PM10":
