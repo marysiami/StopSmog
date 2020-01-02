@@ -76,7 +76,8 @@ class _StateWidgetState extends State<StateWidget> {
         stationsListtemp  = currentItem["stations"].split(',').map((String text){
           text = text.replaceAll("]", "");
           text = text.replaceAll("[", "");
-          return int.parse(text);
+          if(text!="") return int.parse(text);
+          else return 0;
         }).toList();
         stationListNamestemp =currentItem["stationsNames"].split(',').map((String text){
           text = text.replaceAll("]", "");

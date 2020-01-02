@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
         shortName = firstName.substring(0, 1) + lastName.substring(0, 1);
       }
 
-      if (appState.stationNames != null) {
+      if (appState.stationNames != null && appState.stationsId[0] !=0) {
         if (appState.stationNames.length > 0) {
           for (var st in appState?.stationNames) {
             names += st.toString() + "\n";

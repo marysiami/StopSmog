@@ -13,11 +13,10 @@ class Selections extends StatelessWidget {
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: model.quiz.answers
+      children: model.quiz.candidates
           .map((widget) => _buildButton(
                 context,
                 widget: widget,
-                GoodAsnwer: model.quiz.description
               ))
           .toList(),
     );
@@ -25,16 +24,15 @@ class Selections extends StatelessWidget {
 
   Widget _buildButton(
     BuildContext context, {
-    @required String widget,
-        @required String GoodAsnwer
+    @required WidgetData widget,
   }) {
     final model = Provider.of<Model>(context);
     final currentAnswer = model.currentAnswer;
     final isCorrectAnswer = model.current == ProgressKind.correct;
     final answered = isCorrectAnswer || model.current == ProgressKind.incorrect;
-    final isCorrectWidget = answered ? widget == GoodAsnwer : null;
+    final isCorrectWidget = answered ? widget == model.quiz.correct : null;
     return RaisedButton(
-      child: Text(widget),
+      child: Text(widget.name),
       color: currentAnswer == null
           ? null
           : isCorrectWidget
