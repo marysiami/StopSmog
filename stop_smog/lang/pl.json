@@ -31,5 +31,21 @@
   "HaveAccount?": "Masz u nas konto?",
   "Search": "Wpisz nazwę stacji..",
   "yearWarring": "Roczny poziom dopuszczalny to:",
-  "hourWarring": "godzinny poziom dopuszczalny to:"
+  "hourWarring": "godzinny poziom dopuszczalny to:",
+  "Devices": "Urządzenia",
+  "ShopNow": "Kup teraz!",
+  "Films": "Filmy o smogu",
+  "NEXT": "Następny",
+  "Doc": "Dokumentacja",
+  "NoStation":  "\nNie masz wybranych stacji, przejdź do listy stacji i wybierz!",
+  "HaveStation": "\nMasz wybrane następujące stacje:\n ",
+  "CheckYourPlace": "Sprawdź swoje miejsce w rankingu!",
+  "TryAgain": "Spróbuj jeszcze raz!",
+  "Congrats": "Gratulacje!",
+  "Scores": "Twój wynik to: \n",
+  "NoNet":"Brak dostępu do internetu",
+  "Close": "Zamknij",
+  "History": "Historia ",
+  "Attention": "Uwaga!"
+
 }

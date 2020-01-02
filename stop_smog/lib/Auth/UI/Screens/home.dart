@@ -8,9 +8,7 @@ import 'package:stop_smog/Auth/Util/state_widget.dart';
 import 'package:stop_smog/Blog/Blog_menu_page.dart';
 import 'package:stop_smog/Devices/Device_menu.dart';
 import 'package:stop_smog/Infographic/Infographic_Page.dart';
-import 'package:stop_smog/Post/New_point_steps.dart';
 import 'package:stop_smog/Post/StationList_Filter.dart';
-import 'package:stop_smog/Quiz/quiz_page.dart';
 import 'package:stop_smog/Quiz2/Quiz2Main.dart';
 import 'package:stop_smog/Video/Youtube_player.dart';
 
@@ -39,13 +37,13 @@ class _HomeScreenState extends State<HomeScreen> {
       {
         // return object of type Dialog
         return AlertDialog(
-          title: Text("Uwaga!"),
+          title: Text(AppLocalizations.of(context).translate('Attention')),
           content:
-          SingleChildScrollView(child: Text("Brak dostępu do internetu")),
+          SingleChildScrollView(child: Text(AppLocalizations.of(context).translate('NoNet') )),
           actions: <Widget>[
             FlatButton(
               child: Text(
-                'Zamknij',
+                AppLocalizations.of(context).translate('Close'),
                 style: TextStyle(color: Colors.black),
               ),
               onPressed: () {
@@ -111,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
             names += st.toString() + "\n";
           }
           if (names != null) {
-            finalNames = "\nMasz wybrane następujące stacje: \n " + names;
+            finalNames =AppLocalizations.of(context).translate('HaveStation')  + names;
 
             final stationIds = appState?.stationsId;
             for (var id in stationIds) {
@@ -127,12 +125,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         stationName: appState?.stationNames[index]);
                   });
             }
-            ;
+
           }
         }
       } else {
         finalNames =
-            "Nie masz wybranych stacji, przejdź do listy stacji i wybierz!";
+            AppLocalizations.of(context).translate('NoStation');
         details = Text(" ");
       }
 

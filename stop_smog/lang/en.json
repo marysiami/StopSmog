@@ -31,5 +31,19 @@
   "HaveAccount?": "Have Account?",
   "Search": "Search Station Name..",
   "yearWarring": "The annual limit level is:",
-  "hourWarring": "hour(s) acceptable level is:"
+  "hourWarring": "hour(s) acceptable level is:",
+  "Devices": "Devices",
+  "ShopNow": "Shop Now!",
+  "Films": "Films about SMOG",
+  "NEXT": "NEXT",
+  "Doc": "DOCUMENTATION",
+  "NoStation":"\nYou have no chosen station, choose one!",
+  "HaveStation": "\nYour station:\n",
+  "CheckYourPlace": "Chceck your possition in the ranking!",
+  "TryAgain": "Try Again!",
+  "Congrats": "Congratulation!",
+  "Scores": "Scores: \n",
+  "NoNet": "No Internet Connection!",
+  "Close": "Close",
+  "Attention": "Attention!"
 }

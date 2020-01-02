@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:stop_smog/Auth/UI/Screens/home.dart';
 import 'package:stop_smog/Post/Models/Station.dart';
 
 import '../app_localizations.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player/youtube_player.dart';
 
+import '../app_localizations.dart';
 import 'Models/Video.dart';
 
 class YoutubePlayerPage extends StatelessWidget {
@@ -10,7 +11,7 @@ class YoutubePlayerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-        title: Text("Filmy o smogu"),backgroundColor: Colors.transparent,
+        title: Text(AppLocalizations.of(context).translate('Films')) ,backgroundColor: Colors.transparent,
       ),
         body: ListView(
           children: getFilmsListview(context),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stop_smog/Blog/Post_page.dart';
 import 'package:stop_smog/Devices/Device_page.dart';
 
 

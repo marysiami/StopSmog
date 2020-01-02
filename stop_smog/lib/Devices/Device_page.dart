@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../app_localizations.dart';
+
 class DevicePage extends StatelessWidget {
   static const routeName = '/device';
 
@@ -41,12 +43,13 @@ class DevicePage extends StatelessWidget {
           Padding(
               padding:
                   EdgeInsets.only(left: 70, right: 70, top: 10, bottom: 30),
-              child: MaterialButton(
+              child: RaisedButton(
+                onPressed: (){launch(links[0]);},
                 child: ListTile(
                     leading: Icon(Icons.shopping_basket),
-                    title: Text("SHOP NOW",textAlign: TextAlign.center,)),
-                // onPressed: _launchURL(links[0]), //TODO: sprawdzić czemu nie działa otwieranie linków w nowej karcie!
-                onPressed: () {},
+                    title: Text( AppLocalizations.of(context).translate('ShopNow'),textAlign: TextAlign.center,)),
+
+               // onPressed: () {},
                 padding: EdgeInsets.all(10.0),
                 color: Colors.amberAccent,
                 elevation: 8,

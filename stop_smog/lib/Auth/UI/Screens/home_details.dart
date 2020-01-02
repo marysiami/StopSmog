@@ -1,6 +1,4 @@
 import 'dart:convert';
-//import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:fcharts/fcharts.dart';
 import 'package:flutter/material.dart';
 import 'package:stop_smog/Post/API.dart';
 import 'package:stop_smog/Post/Models/HistoryChartParam.dart';
@@ -8,6 +6,8 @@ import 'package:stop_smog/Post/Models/ParamDetails.dart';
 import 'package:stop_smog/Post/Models/StationDetails.dart';
 import 'package:stop_smog/Post/Models/Values.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+
+import '../../../app_localizations.dart';
 
 Map<int, ParamDetails> paramList = new Map();
 
@@ -182,7 +182,7 @@ getBoxWithData(int id, String statnioName, String paramName,
     }
   } else {
     lineChart = Text(
-      "Brak historii parametru",
+      AppLocalizations.of(context).translate('ParametrHistory'),
       style: TextStyle(fontSize: 30, color: Colors.red),
     );
   }
@@ -234,7 +234,7 @@ getBoxWithData(int id, String statnioName, String paramName,
                           builder: (BuildContext context) {
                             return AlertDialog(
                               title: Text(
-                                  'Historia ' + paramName + " " + paramFormula),
+                                  AppLocalizations.of(context).translate('History')  + paramName + " " + paramFormula),
                               content: SingleChildScrollView(
                                 child: ListBody(
                                   children: <Widget>[
@@ -246,7 +246,7 @@ getBoxWithData(int id, String statnioName, String paramName,
                               actions: <Widget>[
                                 FlatButton(
                                   child: Text(
-                                    'Zamknij',
+                                    AppLocalizations.of(context).translate('Close'),
                                     style: TextStyle(color: Colors.black),
                                   ),
                                   onPressed: () {

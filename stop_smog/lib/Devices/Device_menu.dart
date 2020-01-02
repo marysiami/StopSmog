@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../app_localizations.dart';
 import 'Device_icon.dart';
 import 'Sample_devices_data.dart';
 
@@ -11,7 +12,7 @@ class DeviceMenuPage  extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.transparent,title: const Text("Devices",
+      appBar: AppBar(backgroundColor: Colors.transparent,title: Text( AppLocalizations.of(context).translate('Devices'),
         style: TextStyle(
           fontFamily: "Dosis"
         ),
