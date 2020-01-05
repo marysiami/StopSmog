@@ -7,6 +7,7 @@ import 'package:stop_smog/Quiz/Api.dart';
 import 'package:stop_smog/Quiz2/model/model.dart';
 import 'package:stop_smog/Quiz2/pages/quiz_page/selections.dart';
 
+import '../../../app_localizations.dart';
 import 'model.dart';
 import 'progress.dart';
 import 'question.dart';
@@ -41,7 +42,7 @@ class __PageState extends State<_Page> {
   Model get _model => Provider.of<Model>(context, listen: false);
   final _resultPresenter = ResultPresenter();
 
-  static const double _horizontalMargin = 16;
+  static const double _horizontalMargin = 10;
 
   @override
   void initState() {
@@ -109,17 +110,18 @@ class __PageState extends State<_Page> {
 
   Widget _buildResult() {
     final model = Provider.of<Model>(context);
+    addUserPointsDB( model.progress.where((p) => p == ProgressKind.correct).length );
 //    model
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Gratulacje!",
+          Text(AppLocalizations.of(context).translate('Congrats'),
               style: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               )),
-          Text("Twój wynik to: \n",
+          Text(AppLocalizations.of(context).translate('Scores'),
               style: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -142,12 +144,12 @@ class __PageState extends State<_Page> {
           ),
           const SizedBox(height: 8),
           RaisedButton(
-            child: Text('Spróbuj jeszcze raz!'),
+            child: Text(  AppLocalizations.of(context).translate('TryAgain')),
             onPressed: model.load,
           ),
           RaisedButton(
               color: Colors.teal,
-              child: Text('Sprawdź swoje miejsce w rankingu!'),
+              child: Text(  AppLocalizations.of(context).translate('CheckYourPlace')),
               onPressed: () {
                 showDialog(
                     context: context,
@@ -169,7 +171,7 @@ getOtherPoints(int resultScore, BuildContext context) {
   addUserPointsDB(resultScore);
 
   return new AlertDialog(
-      title: Text("Wyniki"),
+      title: Text(AppLocalizations.of(context).translate('Congrats')),
       content: StreamBuilder(
           stream: Firestore.instance.collection('points').snapshots(),
           builder: (context, snapshot) {
@@ -180,7 +182,7 @@ getOtherPoints(int resultScore, BuildContext context) {
             var currentItem = list.firstWhere((x) => x["id"] == userId);
             var index =
                 list.indexWhere((x) => x["points"] == currentItem["points"]) +1;
-            text = "Gratulacje!\nObecnie zajmujesz " +
+            text = "Obecnie zajmujesz " +
                 index.toString() +
                 " miejsce na " +
                 list.length.toString() +"!";
@@ -188,8 +190,7 @@ getOtherPoints(int resultScore, BuildContext context) {
           }),
       actions: <Widget>[
         FlatButton(
-          child: Text(
-            'Zamknij',
+          child: Text(AppLocalizations.of(context).translate('Close'),
             style: TextStyle(color: Colors.black),
           ),
           onPressed: () {
@@ -230,6 +231,6 @@ HandleValue(QuerySnapshot value) {
   list = templist.map((DocumentSnapshot docSnapshot) {
     return docSnapshot.data;
   }).toList();
-  list.sort((a, b) => int.parse(a["points"]).compareTo(int.parse(b["points"])));
+  list.sort((b,a) => int.parse(a["points"]).compareTo(int.parse(b["points"])));
   return list;
 }

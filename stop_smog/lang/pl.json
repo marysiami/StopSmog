@@ -38,7 +38,7 @@
   "NEXT": "Następny",
   "Doc": "Dokumentacja",
   "NoStation":  "\nNie masz wybranych stacji, przejdź do listy stacji i wybierz!",
-  "HaveStation": "\nMasz wybrane następujące stacje:\n ",
+  "HaveStation": "\nMasz wybrane następujące stacje:\n",
   "CheckYourPlace": "Sprawdź swoje miejsce w rankingu!",
   "TryAgain": "Spróbuj jeszcze raz!",
   "Congrats": "Gratulacje!",
@@ -46,6 +46,7 @@
   "NoNet":"Brak dostępu do internetu",
   "Close": "Zamknij",
   "History": "Historia ",
-  "Attention": "Uwaga!"
+  "Attention": "Uwaga!",
+  "MyPoints": "Moje stacje"
 
 }

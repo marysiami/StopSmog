@@ -223,10 +223,13 @@ getBoxWithData(int id, String statnioName, String paramName,
                   ),
                 ),
                 new Row(children: <Widget>[
-                  new Text(
-                    statnioName,
+                  Container(child: new Text(
+                    statnioName,textAlign: TextAlign.justify,
                     style: new TextStyle(fontSize: 16.0, color: Colors.white70),
+
                   ),
+                  width: 210,)
+                  ,
                   new FlatButton(
                     onPressed: () {
                       showDialog(

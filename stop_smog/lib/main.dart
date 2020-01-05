@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
           QuizPage.routeName: (context) => QuizPage(),
           YoutubePlayerPage.routeName: (context) => YoutubePlayerPage(),
           StationListScreen.routeName: (context) => StationListScreen(),
-          NewPointSteps.routeName: (context) => NewPointSteps(),
+          MyPoints.routeName: (context) => MyPoints(),
           StationDetails.routeName: (context) => StationDetails(),
           InfographicPage1.routeName: (context) => InfographicPage1(),
           StationFilter.routeName: (context) => StationFilter(),

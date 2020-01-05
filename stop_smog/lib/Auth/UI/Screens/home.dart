@@ -8,6 +8,7 @@ import 'package:stop_smog/Auth/Util/state_widget.dart';
 import 'package:stop_smog/Blog/Blog_menu_page.dart';
 import 'package:stop_smog/Devices/Device_menu.dart';
 import 'package:stop_smog/Infographic/Infographic_Page.dart';
+import 'package:stop_smog/Post/New_point_steps.dart';
 import 'package:stop_smog/Post/StationList_Filter.dart';
 import 'package:stop_smog/Quiz2/Quiz2Main.dart';
 import 'package:stop_smog/Video/Youtube_player.dart';
@@ -97,13 +98,13 @@ class _HomeScreenState extends State<HomeScreen> {
       final firstName = appState?.user?.firstName ?? '';
       final lastName = appState?.user?.lastName ?? '';
       String names = "";
-      String finalNames = "";
+      String finalNames = AppLocalizations.of(context).translate('NoStation');
       String shortName = "";
       if (firstName != "" && lastName != "") {
         shortName = firstName.substring(0, 1) + lastName.substring(0, 1);
       }
 
-      if (appState.stationNames != null && appState.stationsId[0] !=0) {
+      if (appState.stationNames != null && appState.stationsId !=null) {
         if (appState.stationNames.length > 0) {
           for (var st in appState?.stationNames) {
             names += st.toString() + "\n";
@@ -158,17 +159,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: new Text(shortName, style: TextStyle(fontSize: 20)),
                   ),
                 ),
-//                Card(
-//                  child: ListTile(
-//                    leading: Icon(
-//                      Icons.pin_drop,
-//                      color: Colors.indigoAccent,
-//                      size: 30.0,
-//                    ),
-//                    title: Text('Moje punkty'),
-//                    onTap: () => selectItem(context, NewPointSteps.routeName),
-//                  ),
-//                ),
+                Card(
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.pin_drop,
+                      color: Colors.indigoAccent,
+                      size: 30.0,
+                    ),
+                    title: Text(AppLocalizations.of(context)
+                        .translate('MyPoints')),
+                    onTap: () => selectItem(context, MyPoints.routeName),
+                  ),
+                ),
                 Card(
                   child: ListTile(
                       leading: Icon(

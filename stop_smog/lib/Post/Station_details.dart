@@ -48,39 +48,47 @@ class _StationDetailsextends extends State<StationDetails> {
     List<String> listStationNames = new List<String>();
     FirebaseUser currentUser = await getCurrentFirebaseUser();
     DocumentReference documentReference =
-    Firestore.instance.collection("stations").document(currentUser.uid);
+        Firestore.instance.collection("stations").document(currentUser.uid);
     DocumentSnapshot ds = await documentReference.get();
     bool isLiked = ds.exists;
-
-    if (isLiked) {
+    if (isLiked) { //jak jest dokument o id usera
       var currentItem = list.firstWhere((x) => x["id"] == currentUser.uid);
       var tempList = currentItem["stations"];
       var tempListNames = currentItem["stationsNames"];
-
       bool isInBase = false;
-      for (var ob in tempList) {
-        if (ob == int.parse(stationId)) isInBase = true;
-      }
-      if (isInBase == false) {
-        List<int> stationsList = currentItem["stations"].cast<int>();
-        var tempOutput = new List<int>.from(stationsList);
-        tempOutput.add(int.parse(stationId));
-
-        List<String> stationListNames = currentItem["stationsNames"].cast<
-            String>();
-        var tempOutput2 = new List<String>.from(stationListNames);
-        tempOutput2.add(name);
-
-        tempList = tempOutput.toString();
-        tempListNames = tempOutput2.toString();
-
-        await Firestore.instance
-            .document("stations/${currentUser.uid}")
-            .updateData({"stations": tempList, "stationsNames": tempListNames});
+      if (tempList == "[]" && tempListNames == "[]") {
+        isInBase = true;
       } else {
+        List<int> stationsList = currentItem["stations"].cast<int>();
+        for (var ob in stationsList) {
+          if (ob == int.parse(stationId)) {
+            isInBase = true;
+          }
+        }
+      }
+      if (isInBase == false && tempList != "[]" && tempListNames != "[]") {
+        if (currentItem["stations"] != "[]") {
+          List<int> stationsList = currentItem["stations"].cast<int>();
+          var tempOutput = new List<int>.from(stationsList);
+          tempOutput.add(int.parse(stationId));
+
+          List<String> stationListNames =
+              currentItem["stationsNames"].cast<String>();
+          var tempOutput2 = new List<String>.from(stationListNames);
+          tempOutput2.add(name);
+
+          await Firestore.instance
+              .document("stations/${currentUser.uid}")
+              .updateData(
+                  {"stations": tempOutput, "stationsNames": tempOutput2});
+        }
+      }
+    }
+    else { //jak nie ma dokumentu o id usera
         listStation.add(int.parse(stationId));
         listStationNames.add(name);
-        await Firestore.instance.document("stations/${currentUser.uid}")
+        await Firestore.instance
+            .document("stations/${currentUser.uid}")
             .setData({
           "stations": listStation,
           "id": currentUser.uid,
@@ -98,48 +106,38 @@ class _StationDetailsextends extends State<StationDetails> {
         tempListappStateId.add(int.parse(stationId));
         appState.stationsId = tempListappStateId;
       }
-    }
+
   }
 
   void removeUserStationDB(String stationId, String name) async {
-  List<int> listStation2 = new List<int>();
-  List<String> listStationNames2 = new List<String>();
-  FirebaseUser currentUser2 = await getCurrentFirebaseUser();
-  DocumentReference documentReference2 =
-  Firestore.instance.collection("stations").document(currentUser2.uid);
-  DocumentSnapshot ds = await documentReference2.get();
-  bool isLiked = ds.exists;
+    FirebaseUser currentUser2 = await getCurrentFirebaseUser();
+    DocumentReference documentReference2 =
+        Firestore.instance.collection("stations").document(currentUser2.uid);
+    DocumentSnapshot ds = await documentReference2.get();
+    bool isLiked = ds.exists;
 
-  List<int> stationsList = new List();
-  List<String> stationListNames = new List();
-  var stationsListtemp = new List();
-  var stationListNamestemp = new List();
+    List<int> stationsList = new List();
+    List<String> stationListNames = new List();
 
-  if(isLiked){
-    var currentItem = list.firstWhere((x) => x["id"] == currentUser2.uid);
+    if (isLiked) {
+      var currentItem = list.firstWhere((x) => x["id"] == currentUser2.uid);
 
-    stationsListtemp  = currentItem["stations"].split(',').map((String text){
-      text = text.replaceAll("]", "");
-      text = text.replaceAll("[", "");
-      return int.parse(text);
-    }).toList();
-    stationListNamestemp =currentItem["stationsNames"].split(', ').map((String text){
-      text = text.replaceAll("]", "");
-      text = text.replaceAll("[", "");
-      return text;
-    }).toList();
+      stationsList = currentItem["stations"].cast<int>();
+      stationListNames = currentItem["stationsNames"].cast<String>();
+      int id = int.parse(stationId);
 
-    stationsList = stationsListtemp.cast<int>();
-    stationListNames = stationListNamestemp.cast<String>();
+      var l1 = stationsList.toList();
+      var l2 = stationListNames.toList();
+      l1.remove(id);
+      l2.remove(name);
 
-    stationsList.remove(int.parse(stationId));
-    stationListNames.remove(name);
-
-
-    await Firestore.instance
-        .document("stations/${currentUser2.uid}")
-        .updateData({"stations": stationsList.toString(), "stationsNames": stationListNames.toString()});
-  }
+      await Firestore.instance
+          .document("stations/${currentUser2.uid}")
+          .updateData({
+        "stations": l1,
+        "stationsNames": l2
+      });
+    }
   }
 
   HandleValue(QuerySnapshot value) {

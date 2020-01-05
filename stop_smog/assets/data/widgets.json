@@ -1,422 +1,348 @@
 [
   {
-  "name": "0",
-  "description": "Pytanie 0",
-  "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+  "name": "smog to zanieczyszczone powietrze, które zawiera pyły PM10 i benzo(a)piren",
+  "description": "Co to jest smog?",
+  "link": "http://smog.edu.pl/cotosmog-inf14",
     "id": 0
 
   },
   {
-    "name": "01",
+    "name": "smog to zanieczyszczone powietrze, które zawiera związki chemiczne przyjazne dla zdrowia ludzi i zwierząt",
     "description": "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 0
 
   },
   {
-  "name": "02",
+  "name": "smog to ciekawe zjawisko atmosferyczne występujące na terenach niezamieszkałych przez ludzi",
   "description": "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 0
 
 },
-  {
-    "name": "03",
-    "description": "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 0
 
-  },
   {
-    "name": "04",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 0
-
-  },
-  {
-  "name": "1",
-  "description": "Pytanie 1",
-  "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+  "name": "smog powstaje w wyniku spalania węgla i drewna w domowych kotłach i piecach",
+  "description": "Skąd bierze się smog?",
+  "link": "http://smog.edu.pl/cotosmog-inf14",
     "id": 1
 
   },
   {
-    "name": "11",
+    "name": "smog powstaje w wyniku ogrzewania miast za pomocą sieci ciepłowniczej",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 1
 
   },
   {
-  "name": "12",
+  "name": "smog powstaje w wyniku przyłączenia się do gospodarstw domowych gazu lub pompy ciepła",
   "description":  "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 1
 
   },
-  {
-    "name": "13",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 1
 
-  },
   {
-    "name": "14",
-    "description": "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 1
-
-  },
-  {
-    "name": "2",
-    "description": "Pytanie 2",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "name": "to substancja silnie rakotwórcza, która powstaje gdy w piecach i kotłach spalamy węgiel i drewno",
+    "description": "Co to jest benzo(a)piren?",
+    "link": "http://smog.edu.pl/cotosmog-inf14",
     "id": 2
 
   },
   {
-    "name": "21",
+    "name": "to element czystego powietrza odpowiadający za jego kolor",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 2
 
   },
   {
-  "name": "22",
+  "name": "to związek chemiczny wykorzystywany w produkcji żywności",
   "description":  "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 2
 
   },
-  {
-    "name": "23",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 2
 
-  },
   {
-    "name": "24",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 2
-
-  },
-  {
-    "name": "3",
-    "description": "Pytanie 3",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "name": "to pyły unoszące się w powietrzu, niebezpieczne dla zdrowia ludzkiego",
+    "description": "Co to jest PM 10 i PM 2,5?",
+    "link": "http://smog.edu.pl/cotosmog-inf14",
     "id": 3
 
   },
   {
-    "name": "31",
+    "name": "to oznaczenia stosowane w opisie intensywności smogu, pokazujące stężenie ozonu",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id":3
 
   },
   {
-  "name": "32",
+  "name": "to niezbędny do oddychania i życia związek chemiczny",
   "description": "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 3
 
   },
-  {
-    "name": "33",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 3
 
-  },
   {
-    "name": "34",
-    "description": "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 3
-
-  },
-  {
-    "name": "4",
-    "description": "Pytanie 4",
+    "name": "to połączenie słów 'smoke' i 'fog' (dym i mgła)",
+    "description": "Skąd wzięła się nazwa \"smog\"?",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id":4
 
   },
   {
-    "name": "41",
+    "name": "to akronim od słów: Smoke Molecules On Ground",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id":4
 
   },
   {
-  "name": "42",
+  "name": "od nazwy miejscowości Smog pod Londynem, gdzie od zanieczyszczenia powietrza zmarło 30 proc. populacji",
   "description":  "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 4
 
 },
-  {
-    "name": "43",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 4
 
-  },
   {
-    "name": "44",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 4
-
-  },
-  {
-    "name": "5",
-    "description": "Pytanie 5",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "name": "2%",
+    "description": "Za Ile procent benzo[a]pirenu w Małopolskim powietrzu odpowiada przemysł?",
+    "link": "http://smog.edu.pl/cotosmog-inf14",
     "id": 5
 
   },
   {
-    "name": "51",
+    "name": "99%",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 5
 
   },
   {
-  "name": "52",
+  "name": "50%",
   "description":  "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 5
 
 },
-  {
-    "name": "53",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 5
 
-  },
   {
-    "name": "54",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 5
-
-  },
-  {
-    "name": "6",
-    "description": "Pytanie 6",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "name": "emisja zanieczyszczeń powietrza z kominów nie wyższych niż 40metrów",
+    "description": "Co to jest niska emisja?",
+    "link": "http://smog.edu.pl/cotosmog-inf14",
     "id": 6
 
   },
   {
-    "name": "61",
+    "name": "emisja z pieców umieszczonych poniżej 40 piętra np. wieżowca",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 6
 
   },
   {
-  "name": "62",
+  "name": "emisja programów telewizyjnych informujących o zanieczyszczeniu powietrza",
   "description":  "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 6
 
 },
-  {
-    "name": "63",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 6
 
-  },
   {
-    "name": "64",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 6
-
-  },
-  {
-    "name": "7",
-    "description": "Pytanie 7",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "name": "trzeba zakładać maskę antysmogową, nie wietrzyć mieszkania i włączyć oczyszczacz powietrza",
+    "description": "Jak się chronić, gdy jest smog?",
+    "link": "http://smog.edu.pl/cotosmog-inf14",
     "id": 7
 
   },
   {
-    "name": "71",
+    "name": "należy zastąpić poruszanie się komunikacją miejską na szybki rower",
     "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 7
 
   },
   {
-  "name": "72",
+  "name": "należy często wietrzyć mieszkanie, otwierając okna i drzwi",
   "description":  "",
-  "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 7
 
 },
-  {
-    "name": "73",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 7
 
-  },
   {
-    "name": "74",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 7
-
-  },
-  {
-    "name": "8",
-    "description": "Pytanie 8",
+    "name": "wszystkie powyższe i wiele więcej",
+    "description": "Z czego składa się smog - innymi słowy: co wdychamy w \"smogowe dni\"?",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 8
 
   },
   {
-    "name": "81",
+    "name": "tlenki siarki, węgla i azotu",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 8
 
   },
   {
-  "name": "82",
+  "name": "pyły zawieszone, sadzę i rakotwórczy benzo(a)piren",
   "description":  "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 8
 
 },
-  {
-    "name": "83",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 8
 
-  },
   {
-    "name": "84",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 8
-
-  },
-  {
-    "name": "9",
-    "description": "Pytanie 9",
+    "name": "trocin i ścinków z płyt wiórowych",
+    "description": "Czego nie wolno wrzucić do kominka?",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 9
 
   },
   {
-    "name": "91",
+    "name": "odpadów kory i korka",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 9
 
   },
   {
-  "name": "92",
+  "name": "surowego drewna z szalunków",
   "description":  "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 9
 
 },
-  {
-    "name": "93",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 9
 
-  },
   {
-    "name": "94",
-    "description": "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 9
-
-  },
-  {
-    "name": "10",
-    "description": "Pytanie 10",
+    "name": "smog typu londyńskiego",
+    "description": "Jaki rodzaj smogu atakuje nas głównie zimą?",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 10
 
   },
   {
-    "name": "101",
+    "name": "smog typu Los Angeles",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 10
 
   },
   {
-  "name": "102",
+  "name": "elektrosmog",
   "description":  "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 10
 
 },
-  {
-    "name": "103",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 10
 
-  },
   {
-    "name": "104",
-    "description":  "",
-    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 10
-
-  },
-  {
-  "name": "11",
-  "description": "Pytanie 11",
+  "name": "smog fotochemiczny",
+  "description": "Jak inaczej nazywa się smog typu Los Angeles?",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 11
 
 },
   {
-    "name": "111",
+    "name": "smog elektromagnetyczny",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
     "id": 11
 
   },
   {
-  "name": "112",
+  "name": "smog elektrochemiczny",
   "description": "",
   "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
   "id": 11
 
 },
   {
-    "name": "113",
-    "description": "",
+    "name": "33",
+    "description": "Ile polskich miast jest na niechlubnej liście TOP50 najbardziej zanieczyszczonych miast Europy wg WHO?",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 11
+    "id": 12
 
   },
   {
-    "name": "114",
+    "name": "16",
     "description":  "",
     "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
-    "id": 11
+    "id": 12
+
+  },
+  {
+    "name": "9",
+    "description":  "",
+    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "id": 12
+
+  },
+
+  {
+    "name": "16",
+    "description": "Nie kopie się leżącego, ale tym razem zrobimy wyjątek - ile polskich miast jest w TOP 20 tej samej listy?",
+    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "id": 13
+
+  },
+  {
+    "name": "7",
+    "description":  "",
+    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "id": 13
+
+  },
+  {
+    "name": "20",
+    "description":  "",
+    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "id": 13
+
+  },
+
+  {
+    "name": "Żywiec",
+    "description": "Które polskie miasto jest pod tym względem najgorsze i zajmuje pierwsze miejsce rankingu najbardziej zanieczyszczonych miast Europy?",
+    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "id": 14
+
+  },
+  {
+    "name": "Kraków",
+    "description":  "",
+    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "id": 14
+
+  },
+  {
+    "name": "Rybnik",
+    "description":  "",
+    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "id": 14
+
+  },
+
+  {
+    "name": "ok. 9 miesięcy",
+    "description": "O ile średnio, wg szacunków naukowców, krótsze jest życie wdychającego miejski smog mieszkańca Polski?",
+    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "id": 15
+  },
+  {
+    "name": "ok. pół roku",
+    "description":  "",
+    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "id": 15
+  },
+  {
+    "name": "ok. roku",
+    "description":  "",
+    "link": "https://docs.flutter.io/flutter/material/SliverAppBar-class.html",
+    "id": 15
 
   }
 ]

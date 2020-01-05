@@ -2,6 +2,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../app_localizations.dart';
 import 'model.dart';
 
 class ResultPresenter {
@@ -27,6 +28,8 @@ class ResultPresenter {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
+                Text(correctWidget.description),
+                const SizedBox(height: 8),
                 Text(
                   correctWidget.name,
                   style: TextStyle(
@@ -34,17 +37,15 @@ class ResultPresenter {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                Text(correctWidget.description),
               ],
             ),
             actions: [
               FlatButton(
-                child: const Text('DOCUMENTATION'),
+                child:  Text(AppLocalizations.of(context).translate('Doc')),
                 onPressed: () => launch(correctWidget.link),
               ),
               FlatButton(
-                child: const Text('NEXT'),
+                child:  Text(AppLocalizations.of(context).translate('NEXT')),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },

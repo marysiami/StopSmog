@@ -53,7 +53,7 @@ class _StateWidgetState extends State<StateWidget> {
       initUser();
     }
   }
-  HandleValue(QuerySnapshot value) {
+  HandleValue(QuerySnapshot value) async {
     List<DocumentSnapshot> templist;
 
     templist = value.documents;
@@ -71,19 +71,22 @@ class _StateWidgetState extends State<StateWidget> {
       DocumentSnapshot ds = await documentReference.get();
       bool isLiked = ds.exists;
       if (isLiked) {
-        var currentItem = list.firstWhere((x) => x["id"] == currentUser.uid);
+        var currentItem =  list.firstWhere((x) => x["id"] == currentUser.uid);
+        if(currentItem["stations"] != "[]"){
+          stationsListtemp  = currentItem["stations"].toList();
+        }
+        else {
+          stationsListtemp.add(0);
+        }
+          if(currentItem["stationsNames"] != "[]"){
 
-        stationsListtemp  = currentItem["stations"].split(',').map((String text){
-          text = text.replaceAll("]", "");
-          text = text.replaceAll("[", "");
-          if(text!="") return int.parse(text);
-          else return 0;
-        }).toList();
-        stationListNamestemp =currentItem["stationsNames"].split(',').map((String text){
-          text = text.replaceAll("]", "");
-          text = text.replaceAll("[", "");
-          return text;
-        }).toList();
+            stationListNamestemp =currentItem["stationsNames"].toList();
+
+        }
+          else {
+            stationListNamestemp.add("");
+          }
+
 
         stationsList = stationsListtemp.cast<int>();
         stationListNames = stationListNamestemp.cast<String>();
@@ -92,7 +95,7 @@ class _StateWidgetState extends State<StateWidget> {
 
   }
   Future<Null> initUser() async {
-    var result = api.getDataCollection().then((value) => HandleValue(value));
+    var result = await api.getDataCollection().then((value) => HandleValue(value));
     await getStations();
 
     FirebaseUser firebaseUserAuth = await Auth.getCurrentFirebaseUser();
