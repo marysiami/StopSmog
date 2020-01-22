@@ -34,7 +34,6 @@ class PostIcon extends StatelessWidget {
           padding: const EdgeInsets.all(30),
           child: ListView(
             children: <Widget>[
-
               Text(title,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, fontFamily: "Bitter"),),
               Text(keyWords.join('\n'),

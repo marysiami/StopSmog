@@ -8,6 +8,8 @@ import 'API.dart';
 import 'Station_details.dart';
 
 class StationListScreen extends StatefulWidget {
+
+  const StationListScreen({ Key key }) : super(key: key);
   static const routeName = '/stations_repository';
   @override
   createState() => _StationListScreenState();

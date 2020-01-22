@@ -2,8 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stop_smog/Auth/UI/Screens/home.dart';
-import 'package:stop_smog/Quiz/Api.dart';
+import 'package:stop_smog/API/Api.dart';
 import 'package:stop_smog/Quiz2/model/model.dart';
 import 'package:stop_smog/Quiz2/pages/quiz_page/selections.dart';
 

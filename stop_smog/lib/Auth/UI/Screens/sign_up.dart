@@ -200,10 +200,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         BuildContext context}) async {
     if (_formKey.currentState.validate()) {
       try {
-
         SystemChannels.textInput.invokeMethod('TextInput.hide');
         await _changeLoadingVisible();
-        //need await so it has chance to go through error if found.
         await Auth.signUp(email, password).then((uID) {
           Auth.addUserSettingsDB(new User(
             userId: uID,
@@ -212,10 +210,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             lastName: lastName,
           ));
         });
-        //now automatically login user too
-        //await StateWidget.of(context).logInUser(email, password);
         await Navigator.pushNamed(context, '/signin');
-      } catch (e) {
+      }
+      catch (e) {
         _changeLoadingVisible();
         print("Sign Up Error: $e");
         String exception = Auth.getExceptionText(e,context);

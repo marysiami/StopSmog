@@ -67,20 +67,20 @@ List<Widget> GetPostsList(BuildContext context) {
     ));
 
     final postCardContent = new Container(
-      margin: new EdgeInsets.fromLTRB(110.0, 16.0, 16.0, 16.0),
+      margin: new EdgeInsets.fromLTRB(110.0, 5.0, 16.0, 5.0),
       constraints: new BoxConstraints.expand(),
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          new Container(height: 4.0),
+          new Container(height: 8.0),
           new Text(
             post.title,
-            style: Style.headerTextStyle,
+            style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)
           ),
-          new Container(height: 10.0),
-          new Text(post.author, style: Style.baseTextStyle),
+          new Container(height: 15.0),
+          new Text(post.author, style: TextStyle(fontSize: 12)),
           new Container(
-              margin: new EdgeInsets.symmetric(vertical: 8.0),
+              margin: new EdgeInsets.symmetric(vertical: 5.0),
               height: 2.0,
               width: 18.0,
               color: new Color(0xff00c6ff)),
@@ -94,7 +94,7 @@ List<Widget> GetPostsList(BuildContext context) {
                 new Container(width: 8.0),
                 new Text(
                   post.keyWords.reduce((value, element) => value + ', ' + element),
-                  style: Style.baseTextStyle,
+                    style: TextStyle(fontSize: 12)
                 ),
               ],
             ),

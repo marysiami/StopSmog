@@ -122,7 +122,7 @@ getBoxWithData(int id, String statnioName, String paramName,
             if (val > 500) status = false;
             break;
           case "NO2":
-            if (val > 400) status = false;
+            if (val >400) status = false;
             break;
         }
 

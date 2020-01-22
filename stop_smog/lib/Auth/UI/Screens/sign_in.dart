@@ -41,7 +41,6 @@ class _SignInScreenState extends State<SignInScreen> {
           )),
 
     );
-
     final email = TextFormField(
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
@@ -60,7 +59,6 @@ class _SignInScreenState extends State<SignInScreen> {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
-
     final password = TextFormField(
       autofocus: false,
       obscureText: true,
@@ -79,7 +77,6 @@ class _SignInScreenState extends State<SignInScreen> {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
-
     final loginButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: RaisedButton(
@@ -95,17 +92,15 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Text(AppLocalizations.of(context).translate('SignIn'), style: TextStyle(color: Colors.white)),
       ),
     );
-
     final forgotLabel = FlatButton(
       child: Text(
-        AppLocalizations.of(context).translate('ForgotPAssword'),
+        "Forgot Password",
         style: TextStyle(color: Colors.black54),
       ),
       onPressed: () {
         Navigator.pushNamed(context, '/forgot-password');
       },
     );
-
     final signUpLabel = FlatButton(
       child: Text(
         AppLocalizations.of(context).translate('CreateAccount'),
@@ -115,7 +110,6 @@ class _SignInScreenState extends State<SignInScreen> {
         Navigator.pushNamed(context, '/signup');
       },
     );
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: LoadingScreen(
@@ -148,13 +142,11 @@ class _SignInScreenState extends State<SignInScreen> {
           inAsyncCall: _loadingVisible),
     );
   }
-
   Future<void> _changeLoadingVisible() async {
     setState(() {
       _loadingVisible = !_loadingVisible;
     });
   }
-
   void _emailLogin(
       {String email, String password, BuildContext context}) async {
     if (_formKey.currentState.validate()) {

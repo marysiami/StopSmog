@@ -3,11 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:stop_smog/API/Api.dart';
 import 'package:stop_smog/Auth/Models/settings.dart';
 import 'package:stop_smog/Auth/Models/state.dart';
 import 'package:stop_smog/Auth/Models/user.dart';
 import 'package:stop_smog/Auth/Util/auth.dart';
-import 'package:stop_smog/Quiz/Api.dart';
 
 var api = Api("stations");
 List<Map<dynamic, dynamic>> list = new List();
@@ -41,7 +41,7 @@ class _StateWidgetState extends State<StateWidget> {
   List<int> stationsList = new List();
   List<String> stationListNames = new List();
   var stationsListtemp = new List();
- var stationListNamestemp = new List();
+  var stationListNamestemp = new List();
 
   @override
   void initState() {

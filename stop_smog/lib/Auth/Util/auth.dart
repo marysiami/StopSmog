@@ -12,10 +12,10 @@ import 'package:stop_smog/app_localizations.dart';
 enum authProblems { UserNotFound, PasswordNotValid, NetworkError, UnknownError }
 
 class Auth {
+
   static Future<String> signUp(String email, String password) async {
      AuthResult result = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
-
     return result.user.uid;
   }
 

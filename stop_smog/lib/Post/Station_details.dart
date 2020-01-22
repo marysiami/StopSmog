@@ -5,9 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:stop_smog/API/Api.dart';
 import 'package:stop_smog/Auth/Models/state.dart';
 import 'package:stop_smog/Auth/Util/state_widget.dart';
-import 'package:stop_smog/Quiz/Api.dart';
 import '../app_localizations.dart';
 import 'Models/City.dart';
 import 'Station_details_list.dart';
@@ -51,7 +51,7 @@ class _StationDetailsextends extends State<StationDetails> {
         Firestore.instance.collection("stations").document(currentUser.uid);
     DocumentSnapshot ds = await documentReference.get();
     bool isLiked = ds.exists;
-    if (isLiked) { //jak jest dokument o id usera
+    if (isLiked) {
       var currentItem = list.firstWhere((x) => x["id"] == currentUser.uid);
       var tempList = currentItem["stations"];
       var tempListNames = currentItem["stationsNames"];
@@ -83,30 +83,26 @@ class _StationDetailsextends extends State<StationDetails> {
                   {"stations": tempOutput, "stationsNames": tempOutput2});
         }
       }
+    } else {
+      listStation.add(int.parse(stationId));
+      listStationNames.add(name);
+      await Firestore.instance.document("stations/${currentUser.uid}").setData({
+        "stations": listStation,
+        "id": currentUser.uid,
+        "stationsNames": listStationNames
+      });
     }
-    else { //jak nie ma dokumentu o id usera
-        listStation.add(int.parse(stationId));
-        listStationNames.add(name);
-        await Firestore.instance
-            .document("stations/${currentUser.uid}")
-            .setData({
-          "stations": listStation,
-          "id": currentUser.uid,
-          "stationsNames": listStationNames
-        });
-      }
-      if (appState?.stationNames != null && appState?.stationNames.length > 0) {
-        var tempListappState = appState.stationNames;
-        tempListappState.add(name);
-        appState.stationNames = tempListappState;
-      }
+    if (appState?.stationNames != null && appState?.stationNames.length > 0) {
+      var tempListappState = appState.stationNames;
+      tempListappState.add(name);
+      appState.stationNames = tempListappState;
+    }
 
-      if (appState?.stationsId != null && appState?.stationsId.length > 0) {
-        var tempListappStateId = appState.stationsId;
-        tempListappStateId.add(int.parse(stationId));
-        appState.stationsId = tempListappStateId;
-      }
-
+    if (appState?.stationsId != null && appState?.stationsId.length > 0) {
+      var tempListappStateId = appState.stationsId;
+      tempListappStateId.add(int.parse(stationId));
+      appState.stationsId = tempListappStateId;
+    }
   }
 
   void removeUserStationDB(String stationId, String name) async {
@@ -133,10 +129,7 @@ class _StationDetailsextends extends State<StationDetails> {
 
       await Firestore.instance
           .document("stations/${currentUser2.uid}")
-          .updateData({
-        "stations": l1,
-        "stationsNames": l2
-      });
+          .updateData({"stations": l1, "stationsNames": l2});
     }
   }
 

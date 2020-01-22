@@ -21,9 +21,6 @@ import 'Video/Youtube_player.dart';
 import 'app_localizations.dart';
 
 class MyApp extends StatelessWidget {
-  MyApp() {
-    //Navigation.initPaths();
-  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
